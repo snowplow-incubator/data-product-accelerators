@@ -1,0 +1,49 @@
+{{ with .Inner }}{{/* don't do anything, just call it */}}{{ end }}
+{{ $groupId := default "default" (.Get "groupId") }}
+
+
+{{ $recommendations := site.Data.recommendations }}
+<div class="recommendation-panel">
+  {{ range $idx, $recommendations.accelerators.foundation }}
+  <div class="recommendation-card">
+    <a href={{ .link }} target="_blank">
+      <img class="recommendation-img" src="{{ .image| relURL }}"> </img>
+      <div class="recommendation-info">
+        <button class="pill foundation" autocapitalize="on">Getting Started</button>
+        <h4>
+          {{ .name }}
+        </h4>
+        <a href={{ .link }} target="_blank">LEARN MORE ></a>
+      </div>
+    </a>
+  </div>
+  {{ end }}
+  {{ range $idx, $recommendations.accelerators.intermediate }}
+  <div class="recommendation-card">
+    <a href={{ .link }} target="_blank">
+      <img class="recommendation-img" src="{{ .image| relURL }}"> </img>
+      <div class="recommendation-info">
+        <button class="pill foundation" autocapitalize="on">Getting Started</button>
+        <h4>
+          {{ .name }}
+        </h4>
+        <a href={{ .link }} target="_blank">LEARN MORE ></a>
+      </div>
+    </a>
+  </div>
+  {{ end }}
+  {{ range $idx, $recommendations.accelerators.advanced }}
+  <div class="recommendation-card">
+    <a href={{ .link }} target="_blank">
+      <img class="recommendation-img" src="{{ .image| relURL }}"> </img>
+      <div class="recommendation-info">
+        <button class="pill foundation" autocapitalize="on">Getting Started</button>
+        <h4>
+          {{ .name }}
+        </h4>
+        <a href={{ .link }} target="_blank">LEARN MORE ></a>
+      </div>
+    </a>
+  </div>
+  {{ end }}
+</div>

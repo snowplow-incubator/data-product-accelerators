@@ -1,0 +1,15 @@
+{{ if .Parent }}
+	{{ $link := trim (.Get "link") " " }}
+	{{ $name := trim (.Get "name") " " }}
+	{{ $category := trim (.Get "category") " " }}
+	{{ $type := trim (.Get "type") " " }}
+	{{ if not (.Parent.Scratch.Get "recommendations") }}
+	    {{ .Parent.Scratch.Set "recommendations" slice }}
+	{{ end }}
+	{{ with .Inner }}
+        {{ $.Parent.Scratch.Add "recommendations" (dict "name" $name "link" $link "category" $category "type" $type "content" . ) }}
+	{{ end }}
+{{ else }}
+	{{- errorf "[%s] %q: tab shortcode missing its parent" site.Language.Lang .Page.Path -}}
+{{ end}}
+
