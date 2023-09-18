@@ -17,11 +17,14 @@
 				{{ .Content}}
 			</section>
 			<nav class="flex items-center py-6 px-4 bg-black bg-opacity-20 shadow-lg mb-6">
-				<div class="ml-auto">
+				<div id="navigation">
 					{{with .NextInSection}}
-					<a class="btn btn-transparent" href="{{.RelPermalink}}">Prev</a>
+					<a class="nav btn btn-transparent" href="{{.RelPermalink}}">Prev</a>
 					{{end}}
-					<a class="btn btn-transparent" href="{{.Parent.RelPermalink}}">🏠</a>
+					{{ if eq .NextInSection nil}}
+					<a class="nav btn btn-transparent" href='{{ .CurrentSection.RelPermalink }}'>Prev</a>
+					{{ end }}
+					<a class="nav btn btn-transparent" href="{{.Parent.RelPermalink}}">🏠</a>
 					{{with .PrevInSection}}
 					<a class="btn btn-transparent" href="{{.RelPermalink}}">Next</a>
 					{{end}}
