@@ -1,5 +1,5 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ with .Inner }}{{/* don't do anything, just call it */}}{{ end }}
-<tableau-viz id="tableauViz" src='https://public.tableau.com/views/{{ .Get "name" }}' height='100vh' width='100vw'
+<tableau-viz id="tableauViz" src='https://public.tableau.com/views/{{ .Get "name" }}' height='100vh' width='100%'
     toolbar='bottom'>
 </tableau-viz>
