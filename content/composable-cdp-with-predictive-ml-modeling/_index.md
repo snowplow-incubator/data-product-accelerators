@@ -10,8 +10,6 @@ aliases = [
 ]
 +++
 
-#### Introduction
-
 Welcome to the **Composable CDP with Predictive ML Modeling** accelerator.
 This accelerator guides you through building an advanced Composable Customer Data Platform using a selection of excellent tools for each step of the process.
 * [**Snowplow**](https://snowplow.io/) for creating user behavioral data from your product.

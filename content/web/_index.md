@@ -6,8 +6,6 @@ chapter = false
 weight = 1
 +++
 
-!['logo-banner'](images/logo_banner.png)
-
 Welcome to the **Advanced Analytics for Web** accelerator. Once finished, you will be able to build a deeper understanding of customer behaviour on your website and use your data to influence business decisions.
 
 Here you will learn to:

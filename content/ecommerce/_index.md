@@ -11,9 +11,6 @@ aliases = [
 ]
 +++
 
-### E-commerce Web and Mobile Accelerator
-#### Introduction
-
 This accelerator helps you analyze customer behavior, identify potential growth opportunities, and improve your e-commerce website and app (native iOS and Android) sales performance.
 
 

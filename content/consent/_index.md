@@ -5,9 +5,6 @@ chapter = false
 weight = 1
 +++
 
-### Consent Tracking for Marketing accelerator
-#### Introduction
-
 This accelerator will assist you in collecting user interactions and preferences from your Consent Management Platform (CMP) using Snowplow's enhanced consent plugin.
 
 User consent for data collection is essential for personalization, marketing, and ML driven actions. While CMPs provide some data on user preferences, Snowplow's enhanced consent plugin allows you to gather more detailed information about user consent.
@@ -90,4 +87,4 @@ Complete our [Advanced Analytics for Web](https://docs.snowplow.io/accelerators/
 - **snowplow_web_consent_versions**: Incremental table used to keep track of each consent version and its validity
 
 
-!['logo-banner' ](images/streamlit_dashboard.png)
+!['streamlit-dashboard' ](images/streamlit_dashboard.png)
