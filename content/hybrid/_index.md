@@ -6,9 +6,6 @@ chapter = false
 weight = 1
 +++
 
-
-#### Introduction
-
 Welcome to the **Mobile & Hybrid App Analytics** accelerator. Once finished, you will be able to build a deeper understanding of customer behavior on your mobile apps and use your data to influence business decisions.
 
 Here you will learn to:

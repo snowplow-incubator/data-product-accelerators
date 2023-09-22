@@ -6,10 +6,6 @@ chapter = false
 weight = 1
 +++
 
-### Web Performance Accelerator
-
-#### Introduction
-
 This accelerator will show you how to track and model raw [core web vital](https://web.dev/vitals/) events so that you can monitor your website's performance via the most essential metrics. Improving the web performance can have a dramatic impact on how your users view and interact with your website with the potential to maximize your revenue.
 
 Here you will learn to:
