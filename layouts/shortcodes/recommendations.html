@@ -3,47 +3,55 @@
 
 
 {{ $recommendations := site.Data.recommendations }}
-<div class="recommendation-panel">
+<h3>Foundational Accelerators</h3>
+<div class="recommendation-content">
   {{ range $idx, $recommendations.accelerators.foundation }}
-  <div class="recommendation-card">
-    <a href={{ .link }} target="_blank">
-      <img class="recommendation-img" src="{{ .image| relURL }}"> </img>
-      <div class="recommendation-info">
-        <button class="pill foundation" autocapitalize="on">Getting Started</button>
-        <h4>
-          {{ .name }}
-        </h4>
-        <a href={{ .link }} target="_blank">LEARN MORE ></a>
-      </div>
-    </a>
-  </div>
+  <a class="recommendation-item" href={{ .link }} target="_blank">
+    <h4>
+      {{ .name }}
+    </h4>
+    <div>
+      {{ .content }}
+    </div>
+    <div>
+      <button class="pill">{{ .category }}</button>
+      <button class="pill foundation" autocapitalize="on">Foundation</button>
+    </div>
+  </a>
   {{ end }}
+</div>
+<h3>Intermediate Accelerators</h3>
+<div class="recommendation-content">
   {{ range $idx, $recommendations.accelerators.intermediate }}
-  <div class="recommendation-card">
-    <a href={{ .link }} target="_blank">
-      <img class="recommendation-img" src="{{ .image| relURL }}"> </img>
-      <div class="recommendation-info">
-        <button class="pill foundation" autocapitalize="on">Getting Started</button>
-        <h4>
-          {{ .name }}
-        </h4>
-        <a href={{ .link }} target="_blank">LEARN MORE ></a>
-      </div>
-    </a>
-  </div>
+  <a class="recommendation-item" href={{ .link }} target="_blank">
+    <h4>
+      {{ .name }}
+    </h4>
+    <div>
+      {{ .content }}
+    </div>
+    <div>
+      <button class="pill">{{ .category }}</button>
+      <button class="pill intermediate" autocapitalize="on">Intermediate</button>
+    </div>
+  </a>
   {{ end }}
+</div>
+<h3>Advanced Accelerators</h3>
+<div class="recommendation-content">
   {{ range $idx, $recommendations.accelerators.advanced }}
-  <div class="recommendation-card">
-    <a href={{ .link }} target="_blank">
-      <img class="recommendation-img" src="{{ .image| relURL }}"> </img>
-      <div class="recommendation-info">
-        <button class="pill foundation" autocapitalize="on">Getting Started</button>
-        <h4>
-          {{ .name }}
-        </h4>
-        <a href={{ .link }} target="_blank">LEARN MORE ></a>
-      </div>
-    </a>
-  </div>
+  <a class="recommendation-item" href={{ .link }} target="_blank">
+    <h4>
+      {{ .name }}
+    </h4>
+    <div>
+      {{ .content }}
+    </div>
+    <div>
+      <button class="pill">{{ .category }}</button>
+      <button class="pill advanced" autocapitalize="on">Advanced</button>
+    </div>
+  </a>
   {{ end }}
+</div>
 </div>
