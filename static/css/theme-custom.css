@@ -522,12 +522,11 @@ pre {
 
 @media only all and (max-width: 958px) {
     #sidebar {
-        /* width: 0px; */
         left: -354px;
     }
 
     #top-sidebar-toggle-span #top-sidebar-toggle {
-        display: inline;
+        display: flex;
     }
 
     #body .nav.nav-next,
