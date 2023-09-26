@@ -1,6 +1,8 @@
 +++
-title = "Using your Model"
-weight = 2
+title = "Snowflake - Using your Model"
+weight = 5
+url= '/composable-cdp-with-predictive-ml-modeling/snowflake/using_your_model'
+
 +++
 
 #### Predicting user's propensity to convert

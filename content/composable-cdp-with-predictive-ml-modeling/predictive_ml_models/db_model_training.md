@@ -1,6 +1,8 @@
 +++
-title = "Model Training"
-weight = 1
+title = "Databricks - Model Training"
+weight = 2
+url= '/composable-cdp-with-predictive-ml-modeling/databricks/model_training'
+
 +++
 
 #### Train predictive model using LightGBM and MLflow

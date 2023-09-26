@@ -1,6 +1,8 @@
 +++
-title = "Using your Model"
-weight = 2
+title = "Databricks - Using your Model"
+weight = 3
+url= '/composable-cdp-with-predictive-ml-modeling/databricks/using_your_model'
+
 +++
 
 #### Predicting user's propensity to convert

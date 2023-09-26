@@ -1,6 +1,8 @@
 +++
-title = "Model Training"
-weight = 1
+title = "Snowflake - Model Training"
+weight = 4
+url= '/composable-cdp-with-predictive-ml-modeling/snowflake/model_training'
+
 +++
 
 #### Train predictive model using LightGBM and MLflow
