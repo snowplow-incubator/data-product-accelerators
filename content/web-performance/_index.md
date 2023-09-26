@@ -1,5 +1,5 @@
 +++
-title = "Introduction"
+title = "Web Performance Accelerator"
 menuTitle = "Introduction"
 pre = "<i class='fas fa-rocket'></i> "
 chapter = false

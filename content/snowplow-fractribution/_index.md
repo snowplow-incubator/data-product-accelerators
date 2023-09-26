@@ -1,5 +1,5 @@
 +++
-title = "Introduction"
+title = "Attribution Modeling Accelerator"
 menuTitle = "Introduction"
 pre = "<i class='fas fa-rocket'></i> "
 chapter = false

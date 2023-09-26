@@ -1,5 +1,5 @@
 +++
-title = "Introduction"
+title = "Advanced Analytics for Hybrid Apps"
 menuTitle = "Introduction"
 pre = "<i class='fas fa-rocket'></i> "
 chapter = false

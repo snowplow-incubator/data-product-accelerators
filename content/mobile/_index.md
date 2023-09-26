@@ -1,5 +1,5 @@
 +++
-title = "Introduction"
+title = "Advanced Analytics for Mobile"
 menuTitle = "Introduction"
 pre = "<i class='fas fa-rocket'></i> "
 chapter = false
