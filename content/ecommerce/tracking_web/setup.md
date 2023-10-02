@@ -7,6 +7,8 @@ Depending on your store's front-end infrastructure and Snowplow set-up, you can 
 
 In both options, the API is similar with only minor differences in the set-up and method calls.
 
+There are also instruction for setting up the tracker with a Shopify store and GTM.
+
 {{< tabs groupId="select_js" >}}
 {{% tab name="Browser API" %}}
 

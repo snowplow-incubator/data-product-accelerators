@@ -110,12 +110,13 @@ window.snowplow("trackCheckoutStep:{trackerName}", {
 {{% tab name="Shopify" %}}
 To track a checkout step you can add the code below to a custom HTML tag in your Google workspace:
 
+```
 <script>
 snowplow("trackCheckoutStep", {
   step: 1
 });
 </script>
-
+```
 Add the relevant trigger, for example:
 
 !['Trigger Settings'](../images/checkout-step-trigger.png)
