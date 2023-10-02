@@ -6,7 +6,7 @@ chapter = false
 weight = 1
 +++
 
-This accelerator will show you how to track and model raw [core web vital](https://web.dev/vitals/) events so that you can monitor your website's performance via the most essential metrics. Improving the web performance can have a dramatic impact on how your users view and interact with your website with the potential to maximize your revenue.
+Welcome to the **Web Performance Accelerator**. This accelerator will show you how to track and model raw [core web vital](https://web.dev/vitals/) events so that you can monitor your website's performance via the most essential metrics. Improving the web performance can have a dramatic impact on how your users view and interact with your website with the potential to maximize your revenue.
 
 Here you will learn to:
 
@@ -14,14 +14,14 @@ Here you will learn to:
 - Set-up Snowplow Tracking and Enrichment to prepare your data sources
 - Model Snowplow data
     - using the `core web vitals` optional module of the [snowplow_web](https://hub.getdbt.com/snowplow/snowplow_web/latest/) dbt package
-- See it all come together in a Tableau dashboard
+- See it all come together in a Tableau or Preset dashboard
 ***
 
 #### Who is this guide for?
 
 Data practitioners who would like to:
 - Easily capture `core web vitals` on their website using the Javascript tracker
-- Report and visualize the proportion of vitals [within target](https://web.dev/vitals/#core-web-vitals) using Tableau
+- Report and visualize the proportion of vitals [within target](https://web.dev/vitals/#core-web-vitals) using Tableau or Preset
 
 ***
 
@@ -33,7 +33,7 @@ In an estimated minimum of a day (~5.5 hours) you can achieve the following:
 - **Track -** Set-up and deploy tracking needed for your website performance data
 - **Enrich -** Add an enrichment to your data
 - **Model -** Configure and run the [core web vitals](https://docs.snowplow.io/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-models/dbt-web-data-model//core-web-vitals-module/) module of the `snowplow-web` data model
-- **Visualize -** Use the Tableau twbx template (csv based!) to gain insight into your own website's health
+- **Visualize -** Use the Tableau twbx template (csv based!) or the Preset dashboard template to gain insight into your own website's health
 - **Next steps -** Gain more in-depth knowledge on web performance with additional metrics
 
 
