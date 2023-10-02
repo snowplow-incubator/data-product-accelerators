@@ -89,6 +89,36 @@ window.snowplow("trackAddToCart:{trackerName}", {
 ```
 
 {{% /tab %}}
+{{% tab name="Shopify" %}}
+
+To track a product/s addition to the cart you can add the following custom HTML tag to your Google Workspace:
+
+```
+<script>
+  var floatPrice = parseFloat({{productPrice}});
+  var currentCartValue = parseFloat({{cartTotalValue}});
+  var newTotalValue = floatPrice + currentCartValue;
+
+  var product = [{
+    "id": {{productId}},
+    "name": {{productName}},
+    "price": floatPrice,
+    "brand": {{productBrand}},
+    "category": {{productCategory}},
+    "currency": {{currency}},
+    "variant": {{productVariantTitle}}
+  }]
+
+  // add to cart. The cart_id parameter is not included becuase Shopify uses a cookie instead. 
+  window.snowplow("trackAddToCart", { products: product, total_value:newTotalValue, currency:         {{currency}}});
+</script>
+```
+
+Add the following trigger settings:
+
+!['Trigger Settings'](../images/add-to-cart-trigger.png)
+
+{{% /tab %}}
 
 {{< /tabs >}}
 
@@ -173,7 +203,45 @@ window.snowplow("trackRemoveFromCart:{trackerName}", {
 ```
 
 {{% /tab %}}
+{{% tab name="Shopify" %}}
+To track a product/s removal fron the cart you can add the following custom HTML tag to your Google Workspace:
 
+```
+<script>
+  var intPrice = parseInt({{productPrice}}, 10);
+// Create your global context object
+var myGlobalContext = {
+  schema: "iglu:com.snowplowanalytics.snowplow.ecommerce/product/jsonschema/1-0-0",
+  data: {
+    "id": {{productId}},
+    "name": {{productName}},
+    "price": intPrice,
+    "brand": {{productBrand}},
+    "category": {{productType}},
+    "currency": {{currency}},
+    "variant": {{productVariantTitle}}
+  }
+};
+
+// Set your global context on the Snowplow tracker
+snowplow('addGlobalContexts', [myGlobalContext]);
+  
+snowplow('trackSelfDescribingEvent', {
+  event: {
+    schema: 'iglu:com.snowplowanalytics.snowplow.ecommerce/snowplow_ecommerce_action/jsonschema/1-0-1',
+    data: {
+      type: "remove_from_cart"
+    }
+  }
+});
+</script>
+```
+
+Add the relevant trigger settings, for example:
+
+!['Trigger Settings'](../images/remove-from-cart-trigger.png)
+
+{{% / tab %}}
 {{< /tabs >}}
 
 Where `product` can have the following attributes:

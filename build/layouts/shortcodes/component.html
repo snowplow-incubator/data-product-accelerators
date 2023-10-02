@@ -1,0 +1,2 @@
+<span>{{ $packagelist := site.Data.component_versions }}{{ with $.Get "name" }}{{ $name := . }}{{ range $packagelist.packages }}{{ if eq .title $name }}{{ .version }}{{ end }}{{ end }}{{ end }}</span>
+

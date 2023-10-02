@@ -141,6 +141,90 @@ window.snowplow("trackTransaction:{trackerName}", {
 ```
 
 {{% /tab %}}
+{{% tab name="Shopify" %}}
+To track a completed transaction you can add the following custom HTML tag to your Google Workspace:
+
+```
+<script type="text/javascript" async=1>
+  var revenue = parseFloat({{totalValue}});
+  var tax = parseFloat({{tax}});
+  var productsArray = [];
+  
+  for (var i = 0; i < {{totalQuantity}}; i++) {
+    var productData = {
+      'id': {{productId}}[i],
+      'name': {{productName}}[i],
+      'brand': {{productBrand}}[i],
+      'category': {{productCategory}}[i],
+      'variant': {{productVariantTitle}}[i],
+      'price': parseFloat({{productPrice}}[i]),
+      'currency': {{currency}}
+    }
+    
+    productsArray.push(productData);
+  }
+  
+  snowplow('trackTransaction', {
+    transaction_id: {{transactionId}},
+    revenue: revenue,
+    currency: {{currency}},
+    payment_method: {{paymentType}},
+    total_quantity: {{totalQuantity}},
+    tax: tax,
+    shipping: {{shipping}},
+    products: productsArray
+  });
+
+  /*
+  {
+	page_type: "purchase",
+	event: "shopifyPurchase",
+	currency: "GBP",
+	totalValue: "600.00",
+	totalValueStatic: "600.00",
+	currencyRate: "1.0",
+	shipping: "0.00",
+	tax: "0.00",
+	totalQuantity: 1,
+	payment_type: "",
+	transaction_id: "36661205696791",
+	productName: [
+		The Collection Snowboard: Hydrogen"
+	],
+	productId: [
+		"8239389278487"
+	],
+	productBrand: [
+		"Hydrogen Vendor"
+	],
+	productCategory: [
+		"Hydrogen"
+	],
+	productVariantId: [
+		"44897720336663"
+	],
+	productVariantTitle: [
+		"Default Title"
+	],
+	productSku: [
+		""
+	],
+	productType: "Circular Reference",
+	productPrice: [
+		"600.0"
+	],
+	productQuantity: [
+		"1"
+	]
+}*/
+</script>
+```
+Add the relevant trigger settings, for example:
+
+!['Trigger Settings'](../images/complete-transaction-trigger.png)
+
+
+{{% /tab %}}
 
 {{< /tabs >}}
 
