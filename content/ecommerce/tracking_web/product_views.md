@@ -69,7 +69,56 @@ window.snowplow("trackProductView:{trackerName}", {
 ```
 
 {{% /tab %}}
+{{% tab name="Shopify" %}}
 
+#### `trackProductView`
+
+To track a product view, add the custom HTML tag to your Google workspace.
+
+```
+<script type="text/javascript" async=1>
+  var price = parseFloat({{productPrice}});
+  
+  // set page type
+  snowplow('setPageType', { type:'products', language:"eng", locale:"global"});
+  
+  // track a standard page_view (connected to standard web model)
+  snowplow('trackPageView', {
+    context: [{
+      schema: "iglu:com.snowplowanalytics.snowplow.ecommerce/product/jsonschema/1-0-0",
+      data: {
+        id: {{productId}},
+        name: {{productName}},
+        brand: {{productBrand}},
+        category: {{productCategory}},
+        price: price,
+        currency: {{currency}},
+        variant: {{productVariantTitle}}
+      }
+    }]
+  });
+  
+  // track ecomm product view (connected to ecomm model)
+  snowplow('trackProductView', {
+    id: {{productId}},
+    name: {{productName}},
+    brand: {{productBrand}},
+    category: {{productCategory}},
+    price: price,
+    currency: {{currency}},
+    variant: {{productVariantTitle}}
+});
+
+</script>
+```
+
+Set your trigger configuration as below:
+
+![Trigger Setting](../images/product-view-trigger-settings.png)
+
+
+
+{{% /tab %}}
 {{< /tabs >}}
 
 Where `product` can have the following attributes:

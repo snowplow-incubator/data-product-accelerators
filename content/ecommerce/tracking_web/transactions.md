@@ -141,6 +141,49 @@ window.snowplow("trackTransaction:{trackerName}", {
 ```
 
 {{% /tab %}}
+{{% tab name="Shopify" %}}
+To track a completed transaction you can add the following custom HTML tag to your Google Workspace:
+
+```
+<script type="text/javascript" async=1>
+  var revenue = parseFloat({{totalValue}});
+  var tax = parseFloat({{tax}});
+  var productsArray = [];
+  
+  for (var i = 0; i < {{totalQuantity}}; i++) {
+    var productData = {
+      'id': {{productId}}[i],
+      'name': {{productName}}[i],
+      'brand': {{productBrand}}[i],
+      'category': {{productCategory}}[i],
+      'variant': {{productVariantTitle}}[i],
+      'price': parseFloat({{productPrice}}[i]),
+      'currency': {{currency}}
+    }
+    
+    productsArray.push(productData);
+  }
+  
+  snowplow('trackTransaction', {
+    transaction_id: {{transactionId}},
+    revenue: revenue,
+    currency: {{currency}},
+    payment_method: {{paymentType}},
+    total_quantity: {{totalQuantity}},
+    tax: tax,
+    shipping: {{shipping}},
+    products: productsArray
+  });
+
+
+</script>
+```
+Add the relevant trigger settings, for example:
+
+!['Trigger Settings'](../images/complete-transaction-trigger.png)
+
+
+{{% /tab %}}
 
 {{< /tabs >}}
 
