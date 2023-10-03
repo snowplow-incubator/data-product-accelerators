@@ -1,0 +1,121 @@
++++
+title= "Set-up and run dbt package"
+weight = 2
+post = ""
++++
+
+> This step assumes you have data in the `ATOMIC.SAMPLE_EVENTS` table which will be used to demonstrate how to set-up and run the snowplow_media_player dbt package to model Snowplow media player data.
+
+***
+
+#### **Step 1:** Override the dispatch order in your project
+
+To take advantage of the optimized upsert that the Snowplow packages offer you need to ensure that certain macros are called from `snowplow_utils` first before `dbt-core`. This can be achieved by adding the following to the top level of your `dbt_project.yml` file:
+
+```yaml
+# dbt_project.yml
+...
+dispatch:
+  - macro_namespace: dbt
+    search_order: ['snowplow_utils', 'dbt']
+```
+
+If you do not do this the package will still work, but the incremental upserts will become more costly over time.
+
+#### **Step 2:** Adding the `selectors.yml` file
+
+The snowplow_media_player package provides a suite of suggested selectors to run and test the models.
+
+These are defined in the [selectors.yml](https://github.com/snowplow/dbt-snowplow-media-player/blob/main/selectors.yml) file within the package, however to use these model selections you will need to copy this file into your own dbt project directory.
+
+This is a top-level file and therefore should sit alongside your `dbt_project.yml` file.
+
+#### **Step 3:** Set-up Variables
+
+The snowplow_media_player dbt package comes with a list of variables specified with a default value that you may need to overwrite in your own dbt project’s `dbt_project.yml` file. For details you can have a look at our [docs](https://docs.snowplow.io/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-configuration/media-player/) which contains descriptions and default values of each variable, or you can look in the installed package’s project file which can be found at `[dbt_project_name]/dbt_packages/snowplow_media_player/dbt_project.yml`.
+
+Depending on which media plugin or tracking implementation you use, you will need to enable the relevant contexts in your `dbt_project.yml`:
+
+{{< tabs groupId="tracking_implementation" >}}
+{{% tab name="Media or Vimeo JS plugin" %}}
+
+The package enables the v2 schema by default so no need to change the variables here, unless you want to enable ads or disable the media session context
+
+```yaml
+vars:
+  snowplow_media_player:
+    # use the media session context schema (unless disabled on the tracker)
+    snowplow__enable_media_session: true
+    # depending whether you track ads, ad breaks and progress within ads:
+    snowplow__enable_media_ad: true
+    snowplow__enable_media_ad_break: true
+    snowplow__enable_ad_quartile_event: true
+```
+
+{{% /tab %}}
+{{% tab name="Youtube JS plugin" %}}
+
+```yaml
+vars:
+  snowplow_media_player:
+    snowplow__enable_media_player_v1: true
+    snowplow__enable_media_player_v2: false
+    snowplow__enable_media_session: false
+    snowplow__enable_youtube: true
+```
+
+{{% /tab %}}
+{{% tab name="HTML5 media tracking JS plugin" %}}
+
+```yaml
+vars:
+  snowplow_media_player:
+    snowplow__enable_media_player_v1: true
+    snowplow__enable_media_player_v2: false
+    snowplow__enable_media_session: false
+    snowplow__enable_whatwg_media: true
+    snowplow__enable_whatwg_video: true
+```
+
+{{% /tab %}}
+{{% tab name="Mobile" %}}
+
+
+```yaml
+vars:
+  snowplow_media_player:
+    snowplow__enable_web_events: false
+    snowplow__enable_mobile_events: true
+    # use the media session context schema (unless disabled on the tracker)
+    snowplow__enable_media_session: true
+    # depending whether you track ads, ad breaks and progress within ads:
+    snowplow__enable_media_ad: true
+    snowplow__enable_media_ad_break: true
+    snowplow__enable_ad_quartile_event: true
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+
+If you are using the provided sample data in `ATOMIC.SAMPLE_EVENTS` , add the following snippet to the `dbt_project.yml`:
+
+```yaml
+vars:
+  snowplow_media_player:
+    snowplow__start_date: '2023-08-04'
+    snowplow__events_table: SAMPLE_EVENTS
+    snowplow__enable_media_ad: true
+    snowplow__enable_media_ad_break: true
+    snowplow__enable_ad_quartile_event: true
+```
+
+#### **Step 4:** Run the model
+
+Execute the following either through your CLI or from within dbt Cloud
+
+```yaml
+dbt run --selector snowplow_media_player
+```
+
+This should take a couple of minutes to run each time, depending on how many events you have per day.
