@@ -175,7 +175,7 @@ Add a custom HTML tag to your GTM workspace as below. It should fire on all page
 ```
 
 #### **Step 2:** Add shopify `.liquid` files
-Additionally, add the following `.liquid` files to your Shopify Theme. 
+Additionally, add the following `.liquid` files to your Shopify Theme. You will need to add your GTM tag to the script.
 
 ##### headerDataLayer.liquid
 
@@ -185,7 +185,7 @@ Additionally, add the following `.liquid` files to your Shopify Theme.
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K4XTSJ9');</script>
+})(window,document,'script','dataLayer','GTM-XXXXX');</script>
 <!-- End Google Tag Manager -->
     
 {% comment %} Product view data layer v2.1 - part of "Shopify GA4 Kit" by Analyzify
