@@ -49,11 +49,12 @@
             <section id="body-inner">
                 {{ .Content }}
             </section>
+            {{ partial "footer" }}
+
         </div>
         </div>
 </main>
 {{ end }}
 
 {{ define "footer" }}
-{{ partial "footer" }}
 {{ end }}
