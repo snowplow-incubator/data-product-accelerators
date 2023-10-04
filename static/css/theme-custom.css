@@ -223,7 +223,7 @@ a:hover {
     z-index: 0;
 }
 
-#footer {
+.footer {
     font-size: x-small;
     display: flex;
     align-items: center;
