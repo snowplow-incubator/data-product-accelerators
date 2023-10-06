@@ -4,7 +4,7 @@ weight = 2
 post = ""
 +++
 
-> This step assumes you have data in the `ATOMIC.SAMPLE_EVENTS` table which will be used to demonstrate how to set-up and run the snowplow_media_player dbt package to model Snowplow media player data.
+> This step assumes you have data in the `ATOMIC.SAMPLE_EVENTS_MEDIA_PLAYER` table which will be used to demonstrate how to set-up and run the snowplow_media_player dbt package to model Snowplow media player data.
 
 ***
 
@@ -98,13 +98,13 @@ vars:
 {{< /tabs >}}
 
 
-If you are using the provided sample data in `ATOMIC.SAMPLE_EVENTS` , add the following snippet to the `dbt_project.yml`:
+If you are using the provided sample data in `ATOMIC.SAMPLE_EVENTS_MEDIA_PLAYER` , add the following snippet to the `dbt_project.yml`:
 
 ```yaml
 vars:
   snowplow_media_player:
     snowplow__start_date: '2023-08-04'
-    snowplow__events_table: SAMPLE_EVENTS
+    snowplow__events_table: SAMPLE_EVENTS_MEDIA_PLAYER
     snowplow__enable_media_ad: true
     snowplow__enable_media_ad_break: true
     snowplow__enable_ad_quartile_event: true
