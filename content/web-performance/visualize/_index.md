@@ -20,4 +20,4 @@ flowchart LR
     style id6 fill:#f5f5f5,stroke:#333,stroke-width:1px
 {{</mermaid >}}
 
-In this chapter you can swap the data sources in the sample Tableau workbook file (twbx) to your own modeled output to have an overview of the current state of website performance.
+In this chapter you can swap the data sources in the sample Tableau workbook file (twbx) or Preset dashboard template to your own modeled output to have an overview of the current state of website performance.
