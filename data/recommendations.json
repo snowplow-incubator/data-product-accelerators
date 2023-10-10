@@ -20,6 +20,13 @@
                 "category": "Mobile",
                 "type": "Foundation",
                 "content": "Track user behavior across iOS and Android applications with native and embedded web views"
+            },
+            {
+                "name": "Advanced Analytics for Media Player",
+                "link": "https://docs.snowplow.io/accelerators/media-player/",
+                "category": "Web & Mobile",
+                "type": "Foundation",
+                "content": "Create a heightened insight into user behavior on your media players"
             }
         ],
         "intermediate": [
