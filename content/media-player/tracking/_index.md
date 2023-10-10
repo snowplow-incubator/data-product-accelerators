@@ -5,7 +5,7 @@ chapter = true
 pre = "4. "
 +++
 
-# Set-up your tracking
+# Tracking
 
 {{<mermaid>}}
 flowchart LR

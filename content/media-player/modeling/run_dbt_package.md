@@ -34,7 +34,19 @@ This is a top-level file and therefore should sit alongside your `dbt_project.y
 
 The snowplow_media_player dbt package comes with a list of variables specified with a default value that you may need to overwrite in your own dbt project’s `dbt_project.yml` file. For details you can have a look at our [docs](https://docs.snowplow.io/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-configuration/media-player/) which contains descriptions and default values of each variable, or you can look in the installed package’s project file which can be found at `[dbt_project_name]/dbt_packages/snowplow_media_player/dbt_project.yml`.
 
-Depending on which media plugin or tracking implementation you use, you will need to enable the relevant contexts in your `dbt_project.yml`:
+If you are using the provided sample data in `ATOMIC.SAMPLE_EVENTS_MEDIA_PLAYER`, add the following snippet to the `dbt_project.yml`:
+
+```yaml
+vars:
+  snowplow_media_player:
+    snowplow__start_date: '2023-08-04'
+    snowplow__events_table: SAMPLE_EVENTS_MEDIA_PLAYER
+    snowplow__enable_media_ad: true
+    snowplow__enable_media_ad_break: true
+    snowplow__enable_ad_quartile_event: true
+```
+
+If you are using your own events, depending on which media plugin or tracking implementation you use, you will need to enable the relevant contexts in your `dbt_project.yml`:
 
 {{< tabs groupId="tracking_implementation" >}}
 {{% tab name="Media or Vimeo JS plugin" %}}
@@ -97,17 +109,28 @@ vars:
 {{% /tab %}}
 {{< /tabs >}}
 
+**Check source data:**
 
-If you are using the provided sample data in `ATOMIC.SAMPLE_EVENTS_MEDIA_PLAYER` , add the following snippet to the `dbt_project.yml`:
+This package will by default assume your Snowplow events data is contained in the `atomic` schema of your [`target.database`](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile), in the table labeled `events`. In order to change this, please add the following to your `dbt_project.yml` file:
+
+```
+vars:
+  snowplow_media_player:
+    snowplow__atomic_schema: schema_with_snowplow_events
+    snowplow__database: database_with_snowplow_events
+    snowplow__events_table: table_of_snowplow_events
+```
+
+**Filter your data set:**
+
+You can specify the `start_date` at which to start processing events, the `app_id`'s to filter for, and the `event_name` value to filter on. By default the `start_date` is set to `2020-01-01`, all `app_id`'s are selected, and all events with the `com.snowplowanalytics.snowplow.media` or the `media_player_event` event name are being surfaced. To change this please add/modify the following in your `dbt_project.yml` file:
 
 ```yaml
 vars:
   snowplow_media_player:
-    snowplow__start_date: '2023-08-04'
-    snowplow__events_table: SAMPLE_EVENTS_MEDIA_PLAYER
-    snowplow__enable_media_ad: true
-    snowplow__enable_media_ad_break: true
-    snowplow__enable_ad_quartile_event: true
+    snowplow__start_date: 'yyyy-mm-dd'
+    snowplow__app_id: ['my_app_1','my_app_2']
+    snowplow__media_event_names: ['media_player_event', 'my_custom_media_event']
 ```
 
 #### **Step 4:** Run the model

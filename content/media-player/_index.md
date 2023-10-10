@@ -6,7 +6,7 @@ chapter = false
 weight = 1
 +++
 
-Welcome to the **Advanced Analytics for Media Player** accelerator. Once finished, you will be able to build a deeper understanding of customer behaviour on your media players and use your data to influence business decisions.
+Welcome to the **Advanced Analytics for Media Player** accelerator. Once finished, you will be able to build a deeper understanding of user behavior across your media players and use your data to influence business decisions.
 
 Here you will learn to:
 
@@ -21,7 +21,7 @@ Here you will learn to:
 #### Who is this guide for?
 
 - Data practitioners who would like to get familiar with Snowplow data.
-- Data practitioners who want to learn how to use the snowplow-media-player dbt package and set-up tracking using their media players, to gain insight from their customers’ behavioral data as quickly as possible.
+- Data practitioners who want to learn how to use the snowplow-media-player dbt package and set-up tracking using their media players, to gain insight from their users' behavioral data as quickly as possible.
 
 ***
 
@@ -32,7 +32,7 @@ In approximately 8 working hours you can achieve the following:
 - **Upload data -** Upload a sample Snowplow events dataset to your warehouse
 - **Model -** Configure and run the snowplow-media-player data model
 - **Visualize -** Visualize the modeled data with Tableau
-- **Track -** Set-up and deploy tracking to your media players
+- **Track -** Set-up and deploy tracking across your media players
 - **Next steps -** Gain value from your own pipeline data through modeling and visualization
 
 
@@ -62,9 +62,9 @@ gantt
 - New dbt project created and configured
 - Snowflake, Databricks or BigQuery account and a user with access to create schemas and tables
 
-**Tracking and Enrichment**
+**Tracking**
 - Snowplow pipeline
-- Web app to implement tracking
+- Media player to implement tracking
 
 #### What you will build
 
