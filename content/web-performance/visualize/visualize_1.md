@@ -1,5 +1,5 @@
 +++
-title = "Visualize your data"
+title = "Tableau"
 weight = 1
 post = ""
 +++
