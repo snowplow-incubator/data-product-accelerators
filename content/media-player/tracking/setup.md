@@ -31,7 +31,7 @@ Snowplow provides a range of tracking SDKs to address different media players an
 | [iOS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/) | Mobile (iOS) | v2 | No | Any |
 | [iOS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/) | Mobile (iOS) | v2 | Yes | AVPlayer |
 | [Android tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/) | Mobile (Android) | v2 | No | Any |
-| HTML5 Media Tracking Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media-tracking/) | Web | v1 | Yes | HTML5 media or video |
+| [HTML5 Media Tracking Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media-tracking/) | Web | v1 | Yes | HTML5 media or video |
 | [YouTube Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/youtube-tracking/) | Web | v1 | Yes | YouTube |
 
 #### **Step 2:** Install the tracking SDK in your app
@@ -73,33 +73,6 @@ npm install @snowplow/browser-tracker @snowplow/browser-plugin-media-tracking
 ```
 {{% /tab %}}
 
-{{% tab name="Web – script tag" %}}
-Add the `sp.js` file in your project and add it to a link-accessible server directory e.g. `public/`. The latest version can be found **[here](https://github.com/snowplow/snowplow-javascript-tracker/releases) .**
-
-Add the below snippet to all of the pages you would like to use Snowplow tracking. **Make sure to update the {{Link to the sp.js file}} variable.**
-
-Place the `<script>` tag into the `<head>` element of your pages:
-
-```jsx
-<script type="text/javascript">
-  (function (p, l, o, w, i, n, g) {
-    if (!p[i]) {
-      p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
-      p.GlobalSnowplowNamespace.push(i);
-      p[i] = function () {
-        (p[i].q = p[i].q || []).push(arguments);
-      };
-      p[i].q = p[i].q || [];
-      n = l.createElement(o);
-      g = l.getElementsByTagName(o)[0];
-      n.async = 1;
-      n.src = w;
-      g.parentNode.insertBefore(n, g);
-    }
-  })(window, document, "script", "{{Link to sp.js file}}", "snowplow");
-</script>
-```
-{{% /tab %}}
 {{% tab name="iOS" %}}
 You can install the tracker using SPM as follows:
 
@@ -127,6 +100,10 @@ dependencies {
 
 {{< /tabs >}}
 
+{{% notice note %}}
+It is also possible to integrate the plugins using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/). 
+{{% /notice %}}
+
 
 #### **Step 3:** Create and configure the tracker
 
@@ -135,171 +112,67 @@ Next, you will need to create a configured tracker instance.
 {{< tabs groupId="tracking sdk" >}}
 
 {{% tab name="Media JS plugin" %}}
-*Installed with package manager:*
 
->To add the `SnowplowMediaPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->import { newTracker } from '@snowplow/browser-tracker';
->import { SnowplowMediaPlugin } from '@snowplow/browser-plugin-media';
->
->newTracker('sp1', '{{collector_url}}', { 
->    appId: 'my-app-id', 
->    plugins: [ SnowplowMediaPlugin() ],
->});
->```
+To add the `SnowplowMediaPlugin` on the JavaScript tracker, you should include it as shown below:
 
-*Installed with script tag:*
+```jsx
+import { newTracker } from '@snowplow/browser-tracker';
+import { SnowplowMediaPlugin } from '@snowplow/browser-plugin-media';
 
->You can now create the `newTracker`, with the following arguments. This creates an instance of a basic tracker without any additional >context.
->
->- Tracker Name: `'sp'`
->- Collector Url: `'{{Url for Collector}}'`
->
->```jsx
->window.snowplow("newTracker", "sp", "{{Url for Collector}}", {
->  */* tracker options */*
->});
->```
->
->In addition to the basic tracker, you can add any number of options for using Snowplow’s more advanced features. See more on our >documentation.
->
->To add the `SnowplowMediaPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->window.snowplow(
->    'addPlugin',
->    'https://cdn.jsdelivr.net/npm/@snowplow/browser-plugin-media@latest/dist/index.umd.min.js',
->    ['snowplowMedia', 'SnowplowMediaPlugin']
->);
->```
+newTracker('sp1', '{{collector_url}}', { 
+    appId: 'my-app-id', 
+    plugins: [ SnowplowMediaPlugin() ],
+});
+```
+
+
 {{% /tab %}}
 
 {{% tab name="Vimeo JS plugin" %}}
-*Installed with package manager:*
 
->To add the `VimeoTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->import { newTracker } from '@snowplow/browser-tracker';
->import { VimeoTrackingPlugin, enableYouTubeTracking } from '@snowplow/browser-plugin-youtube-tracking';
->
->newTracker('sp1', '{{collector_url}}', {
->    appId: 'my-app-id',
->    plugins: [ VimeoTrackingPlugin() ],
->});
->```
+To add the `VimeoTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
 
-*Installed with script tag:*
+```jsx
+import { newTracker } from '@snowplow/browser-tracker';
+import { VimeoTrackingPlugin, enableYouTubeTracking } from '@snowplow/browser-plugin-youtube-tracking';
 
->You can now create the `newTracker`, with the following arguments. This creates an instance of a basic tracker without any additional >context.
->
->- Tracker Name: `'sp'`
->- Collector Url: `'{{Url for Collector}}'`
->
->```jsx
->window.snowplow("newTracker", "sp", "{{Url for Collector}}", {
->  */* tracker options */*
->});
->```
->
->In addition to the basic tracker, you can add any number of options for using Snowplow’s more advanced features. See more on our >documentation.
->
->To add the `VimeoTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->window.snowplow(
->    'addPlugin',
->    'https://cdn.jsdelivr.net/npm/@snowplow/browser-plugin-vimeo-tracking@latest/dist/index.umd.min.js',
->    ['snowplowVimeoTracking', 'VimeoTrackingPlugin']
->);
->```
+newTracker('sp1', '{{collector_url}}', {
+    appId: 'my-app-id',
+    plugins: [ VimeoTrackingPlugin() ],
+});
+```
 
 {{% /tab %}}
 
 {{% tab name="YouTube JS plugin" %}}
 
-*Installed with package manager:*
+To add the `YouTubeTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
 
->To add the `YouTubeTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->import { newTracker } from '@snowplow/browser-tracker';
->import { YouTubeTrackingPlugin, enableYouTubeTracking } from '@snowplow/browser-plugin-youtube-tracking';
->
->newTracker('sp1', '{{collector_url}}', {
->    appId: 'my-app-id',
->    plugins: [ YouTubeTrackingPlugin() ],
->});
->```
+```jsx
+import { newTracker } from '@snowplow/browser-tracker';
+import { YouTubeTrackingPlugin, enableYouTubeTracking } from '@snowplow/browser-plugin-youtube-tracking';
 
-*Installed with script tag:*
-
->You can now create the `newTracker`, with the following arguments. This creates an instance of a basic tracker without any additional >context.
->
->- Tracker Name: `'sp'`
->- Collector Url: `'{{Url for Collector}}'`
->
->```jsx
->window.snowplow("newTracker", "sp", "{{Url for Collector}}", {
->  */* tracker options */*
->});
->```
->
->In addition to the basic tracker, you can add any number of options for using Snowplow’s more advanced features. See more on our >documentation.
->
->To add the `YouTubeTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->window.snowplow(
->    'addPlugin',
->    'https://cdn.jsdelivr.net/npm/@snowplow/browser-plugin-youtube-tracking@latest/dist/index.umd.min.js',
->    ['snowplowYouTubeTracking', 'YouTubeTrackingPlugin']
->);
->```
+newTracker('sp1', '{{collector_url}}', {
+    appId: 'my-app-id',
+    plugins: [ YouTubeTrackingPlugin() ],
+});
+```
 
 {{% /tab %}}
 
 {{% tab name="HTML5 media tracking JS plugin" %}}
 
-*Installed with package manager:*
+To add the `MediaTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
 
->To add the `MediaTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->import { newTracker } from '@snowplow/browser-tracker';
->import { MediaTrackingPlugin, enableMediaTracking } from '@snowplow/browser-plugin-media-tracking';
->
->newTracker('sp1', '{{collector_url}}', {
->    appId: 'my-app-id',
->    plugins: [ MediaTrackingPlugin() ],
->});
->```
+```jsx
+import { newTracker } from '@snowplow/browser-tracker';
+import { MediaTrackingPlugin, enableMediaTracking } from '@snowplow/browser-plugin-media-tracking';
 
-*Installed with script tag:*
-
->You can now create the `newTracker`, with the following arguments. This creates an instance of a basic tracker without any additional >context.
->
->- Tracker Name: `'sp'`
->- Collector Url: `'{{Url for Collector}}'`
->
->```jsx
->window.snowplow("newTracker", "sp", "{{Url for Collector}}", {
->  */* tracker options */*
->});
->```
->
->In addition to the basic tracker, you can add any number of options for using Snowplow’s more advanced features. See more on our >documentation.
->
->To add the `MediaTrackingPlugin` on the JavaScript tracker, you should include it as shown below:
->
->```jsx
->window.snowplow(
->  'addPlugin',
->  'https://cdn.jsdelivr.net/npm/@snowplow/browser-plugin-media-tracking@latest/dist/index.umd.min.js',
->  ['snowplowMediaTracking', 'MediaTrackingPlugin']
->);
->```
+newTracker('sp1', '{{collector_url}}', {
+    appId: 'my-app-id',
+    plugins: [ MediaTrackingPlugin() ],
+});
+```
 
 {{% /tab %}}
 
@@ -382,62 +255,30 @@ const id = 'XXXXX'; // randomly generated ID
 
 To start tracking media events, call the `startMediaTracking` function with the ID.
 
-*Installed with package manager:*
+```jsx
+import { startMediaTracking } from "@snowplow/browser-plugin-media";
+startMediaTracking({
+  id,
+  player: {
+      duration: 150, // A double-precision floating-point value indicating the duration of the media in seconds
+      label: 'Sample video', // A human-readable title for the media
+      playerType: 'html5', // The type of player
+  },
+  boundaries: [10, 25, 50, 75] // Percentage progress events will be tracked when playback reaches the boundaries
+});
+```
 
->```jsx
->import { startMediaTracking } from "@snowplow/browser-plugin-media";
->startMediaTracking({
->  id,
->  player: {
->      duration: 150, // A double-precision floating-point value indicating the duration of the media in seconds
->      label: 'Sample video', // A human-readable title for the media
->      playerType: 'html5', // The type of player
->  },
->  boundaries: [10, 25, 50, 75] // Percentage progress events will be tracked when playback reaches the boundaries
->});
->```
->
->See [the documentation for the full list](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#media-player-properties) of options.
-
-*Installed with script tag:*
-
->```jsx
->import { startMediaTracking } from "@snowplow/browser-plugin-media";
->startMediaTracking({
->  id,
->  player: {
->      duration: 150, // A double-precision floating-point value indicating the duration of the media in seconds
->      label: 'Sample video', // A human-readable title for the media
->      playerType: 'html5', // The type of player
->  }
->  boundaries: [10, 25, 50, 75] // Percentage progress events will be tracked when playback reaches the boundaries
->});
->```
->
->See [the documentation for the full list](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/#media-player-properties) of options.
-
+See [the documentation for the full list](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#media-player-properties) of options.
 
 Subscribe for playback position changes on the media player and make sure to update the player properties as follows.
 
-*Installed with package manager:*
-
->```jsx
->import { updateMediaTracking } from "@snowplow/browser-plugin-media";
->updateMediaTracking({
->  id,
->  player: { currentTime: 10 }
->});
->```
-
-*Installed with script tag:*
-
->```jsx
->window.snowplow('updateMediaTracking', {
->  id,
->  player: { currentTime: 10 }
->});
->```
-
+```jsx
+import { updateMediaTracking } from "@snowplow/browser-plugin-media";
+updateMediaTracking({
+  id,
+  player: { currentTime: 10 }
+});
+```
 
 Subscribe to the player events that you are interested in and use the relevant functions to track the events (see the [documentation for the full list](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#tracking-media-events)), for example:
 
@@ -455,38 +296,19 @@ Subscribe to the player events that you are interested in and use the relevant f
 
 To track the events, simply provide the media tracking ID to the respective tracking function:
 
-*Installed with package manager:*
+```jsx
+import { trackMediaPlay } from "@snowplow/browser-plugin-media";
+trackMediaPlay({ id });
+```
 
->```jsx
->import { trackMediaPlay } from "@snowplow/browser-plugin-media";
->trackMediaPlay({ id });
->```
->
->You can also pass additional optional information to the track methods [as documented here](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#providing-additional-information).
-
-*Installed with script tag:*
-
->```jsx
->window.snowplow('trackMediaPlay', { id });
->```
->
->You can also pass additional optional information to the track methods [as documented here](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/#providing-additional-information).
-
+You can also pass additional optional information to the track methods [as documented here](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#providing-additional-information).
 
 Finally, use the `endMediaTracking` call to end media tracking. This will clear the local state for the media tracking and stop any background updates.
 
-*Installed with package manager:*
-
->```jsx
->import { endMediaTracking } from "@snowplow/browser-plugin-media";
->endMediaTracking({ id });
->```
-
-*Installed with script tag:*
-
->```jsx
->window.snowplow('endMediaTracking', { id });
->```
+```jsx
+import { endMediaTracking } from "@snowplow/browser-plugin-media";
+endMediaTracking({ id });
+```
 
 {{% /tab %}}
 
@@ -505,8 +327,6 @@ To start tracking media events, call the `startVimeoTracking` function. The func
 
 In case of using an `iframe` element for the attribute, call the function as follows.
 
-*Installed with package manager:*
-
 ```jsx
 import { startVimeoTracking } from '@snowplow/browser-plugin-vimeo-tracking'
 
@@ -515,17 +335,7 @@ const video = document.getElementById('vimeo-iframe')
 startVimeoTracking({ id, video })
 ```
 
-*Installed with script tag:*
-
-```jsx
-const video = document.getElementById('vimeo-iframe')
-
-window.snowplow('startVimeoTracking', { id, video });
-```
-
 In case of passing an instance of `Vimeo.Player`, created with the [Vimeo Player SDK](https://developer.vimeo.com/player/sdk), you can call `startVimeoTracking` as follows.
-
-*Installed with package manager:*
 
 ```jsx
 import { Player } from '@vimeo/player'
@@ -538,19 +348,7 @@ const video = new Player('vimeo-player', {
 startVimeoTracking({ id, video })
 ```
 
-*Installed with script tag:*
-
-```jsx
-const video = new Vimeo.Player('vimeo-player', {
-  videoId: 'zSM4ZyVe8xs'
-});
-
-window.snowplow('startVimeoTracking', { id, video });
-```
-
 After the video player disappears (particularly important in single page apps), it's important to call `endVimeoTracking` as this will end any recurring ping events, clear all listeners set by the Vimeo plugin, along with resetting statistics counters.
-
-*Installed with package manager:*
 
 ```jsx
 import { endVimeoTracking } from '@snowplow/browser-plugin-vimeo-tracking'
@@ -560,21 +358,11 @@ endVimeoTracking(id)
 
 For more configuration and tracking options, [visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/vimeo-tracking/#advanced-usage).
 
-*Installed with script tag:*
-
-```jsx
-window.snowplow('endVimeoTracking', id);
-```
-
-For more configuration and tracking options, [visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/vimeo-tracking/#advanced-usage).
-
 {{% /tab %}}
 
 {{% tab name="YouTube JS plugin" %}}
 
 To start tracking media events, call the  `enableYouTubeTracking` function. To find the YouTube player, this function takes an `id` parameter which is the HTML id attribute of the media element.
-
-*Installed with package manager:*
 
 ```jsx
 enableYouTubeTracking({
@@ -587,19 +375,6 @@ enableYouTubeTracking({
 
 For more configuration options, [see the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/youtube-tracking/#the-enableyoutubetracking-function).
 
-*Installed with script tag:*
-
-```jsx
-window.snowplow('enableYouTubeTracking', {
-  id: 'my-video',
-  options: {
-    label: 'My Video Name',
-  }
-})
-```
-
-For more configuration options, [see the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/youtube-tracking/#the-enableyoutubetracking-function).
-
 {{% /tab %}}
 
 {{% tab name="HTML5 media tracking JS plugin" %}}
@@ -610,8 +385,6 @@ To start tracking media events, call the  `enableMediaTracking` function. To f
 2. or the id of the parent element of the `<audio>` or `<video>` element (the parent can only have one child element).
 
 It is also a good practice to set the `label` of the media being played. This may be the title of the video.
-
-*Installed with package manager:*
 
 ```jsx
 import { enableMediaTracking } from '@snowplow/browser-plugin-media-tracking'
@@ -625,19 +398,6 @@ enableMediaTracking({
 ```
 
 For more configuration options, [see the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media-tracking/#the-enablemediatracking-function).
-
-*Installed with script tag:*
-
-```jsx
-window.snowplow('enableMediaTracking', {
-  id: 'my-video',
-  options: {
-    label: 'My Video Name'
-  }
-});
-```
-
-For more configuration options, [see the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media-tracking/#the-enablemediatracking-function).
 
 {{% /tab %}}
 
