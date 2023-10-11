@@ -101,7 +101,7 @@ dependencies {
 {{< /tabs >}}
 
 {{% notice note %}}
-It is also possible to integrate the plugins using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/). 
+It is also possible to integrate the plugins using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/).
 {{% /notice %}}
 
 
@@ -438,7 +438,7 @@ Subscribe to the player events that you are interested in and use the relevant m
 - `MediaEndEvent` – playback stops when end of the media is reached.
 - `MediaSeekStartEvent` – seek operation begins.
 - `MediaSeekEndEvent` – seek operation completes.
-- `MediaPlaybackRateChangeEvent` – playback rate has changed ([accepts a](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#playback-rate-change) `[newRate](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/?platform=android#playback-rate-change)` [parameter](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#playback-rate-change) with the new playback rate).
+- `MediaPlaybackRateChangeEvent` – playback rate has changed ([accepts a `newRate` parameter](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#playback-rate-change) with the new playback rate).
 - `MediaVolumeChangeEvent` – volume has changed ([accepts a `newVolume` parameter](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#volume-change) with the new volume).
 - `MediaBufferStartEvent` – player goes into the buffering state and begins to buffer content.
 - `MediaBufferEndEvent` – player finishes buffering content and resumes playback.
@@ -501,7 +501,7 @@ Subscribe to the player events that you are interested in and use the relevant m
 - `MediaEndEvent` – playback stops when end of the media is reached.
 - `MediaSeekStartEvent` – seek operation begins.
 - `MediaSeekEndEvent` – seek operation completes.
-- `MediaPlaybackRateChangeEvent` – playback rate has changed ([accepts a](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#playback-rate-change) `[newRate](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/?platform=android#playback-rate-change)` [parameter](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#playback-rate-change) with the new playback rate).
+- `MediaPlaybackRateChangeEvent` – playback rate has changed ([accepts a `newRate` parameter](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#playback-rate-change) with the new playback rate).
 - `MediaVolumeChangeEvent` – volume has changed ([accepts a `newVolume` parameter](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/#volume-change) with the new volume).
 - `MediaBufferStartEvent` – player goes into the buffering state and begins to buffer content.
 - `MediaBufferEndEvent` – player finishes buffering content and resumes playback.
