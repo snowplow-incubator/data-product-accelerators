@@ -26,13 +26,13 @@ Snowplow provides a range of tracking SDKs to address different media players an
 
 | Tracking SDK | Platform | Media schemas version | Provides auto-tracking? | Player |
 | --- | --- | --- | --- | --- |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/ | Web | v2 | No | Any |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/vimeo-tracking/ | Web  | v2 | Yes | Vimeo |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/ | Mobile (iOS) | v2 | No | Any |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/ | Mobile (iOS) | v2 | Yes | AVPlayer |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/ | Mobile (Android) | v2 | No | Any |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media-tracking/ | Web | v1 | Yes | HTML5 media or video |
-| https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/youtube-tracking/ | Web | v1 | Yes | YouTube |
+| [Media Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media/) | Web | v2 | No | Any |
+| [Vimeo Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/vimeo-tracking/) | Web  | v2 | Yes | Vimeo |
+| [iOS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/) | Mobile (iOS) | v2 | No | Any |
+| [iOS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/) | Mobile (iOS) | v2 | Yes | AVPlayer |
+| [Android tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/media-tracking/) | Mobile (Android) | v2 | No | Any |
+| HTML5 Media Tracking Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/media-tracking/) | Web | v1 | Yes | HTML5 media or video |
+| [YouTube Plugin for JS tracker](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/browser-tracker/browser-tracker-v3-reference/plugins/youtube-tracking/) | Web | v1 | Yes | YouTube |
 
 #### **Step 2:** Install the tracking SDK in your app
 
