@@ -6,7 +6,7 @@ chapter = false
 weight = 1
 +++
 
-Welcome to the **Advanced Analytics for Media Player** accelerator. Once finished, you will be able to build a deeper understanding of user behavior across your media players and use your data to influence business decisions.
+Welcome to the **Video and Media Analytics** accelerator. Once finished, you will be able to build a deeper understanding of user behavior across your media players and use your data to influence business decisions.
 
 Here you will learn to:
 
@@ -68,6 +68,6 @@ gantt
 
 #### What you will build
 
-**Advanced Analytics for Media Player Dashboard** - with Tableau
+**Video and Media Analytics Dashboard** - with Tableau
 
 {{< tableau name="MediaPlayerAccelerator/Overview?publish=yes" />}}

@@ -8,6 +8,10 @@ post = ""
 
 In this section you are going to be adding our `snowplow_media_player` package to your fresh project. This will mean your project is able to run all our models, but will keep our package in the `dbt_packages` folder to keep your project clean and organized.
 
+{{% notice note %}}
+Our `snowplow_media_player` dbt package is licensed to you under the [Snowplow Personal and Academic License Version 1.0](https://docs.snowplow.io/personal-and-academic-license-1.0/), and you may not use this package except in compliance with the [Snowplow Personal and Academic License Version 1.0](https://docs.snowplow.io/personal-and-academic-license-1.0/).
+{{% /notice %}}
+
 #### **Step 1:** Add snowplow_media_player package
 
 Add the snowplow_media_player package to your `packages.yml` file, which you may have to create at the same level as your `dbt_project.yml` file. The latest version of our package can be found [here](https://hub.getdbt.com/snowplow/snowplow_media_player/latest/).

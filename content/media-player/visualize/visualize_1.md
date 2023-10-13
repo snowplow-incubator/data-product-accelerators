@@ -36,4 +36,15 @@ Once you have the file locally, you can open it in several ways: with Tableau Pu
 
 You should have a working dashboard with your own data! Feel free to pick and choose visualizations and dashboards to make your custom one.
 
+Switch tabs in the top left of the dashboard to see **Content** and **Ads** metrics.
+
 {{< tableau name="MediaPlayerAccelerator/Overview?publish=yes" />}}
+
+**Overview:**
+Get a high level view across all your media and video content performance.
+
+**Content:**
+Gain deeper insights into your individual media and video content. See how impressions convert to completed plays (you can adjust your definitions of valid and complete plays in the model configuration, [see our docs for more information](https://docs.snowplow.io/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-configuration/media-player/#operation-and-logic)). Using the percentage reached metrics you can look further at audience retention to understand how far viewers reached through your content and identify key moments from any spikes or dips.
+
+**Ads:**
+Compare your individual ad performance on key metrics like Click-Through-Rate and see what content returned the most ad views and clicks. Know how far viewers reach through your ads in the Ad Audience Retention chart, this can be helpful in understanding where in the ad viewers may be skipping.

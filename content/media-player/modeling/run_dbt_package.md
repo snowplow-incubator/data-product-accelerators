@@ -51,8 +51,6 @@ If you are using your own events, depending on which media plugin or tracking im
 {{< tabs groupId="tracking_implementation" >}}
 {{% tab name="Media or Vimeo JS plugin" %}}
 
-The package enables the v2 schema by default so no need to change the variables here, unless you want to enable ads or disable the media session context
-
 ```yaml
 vars:
   snowplow_media_player:
@@ -91,7 +89,6 @@ vars:
 
 {{% /tab %}}
 {{% tab name="Mobile" %}}
-
 
 ```yaml
 vars:

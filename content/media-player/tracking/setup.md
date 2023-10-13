@@ -47,6 +47,8 @@ Install the `@snowplow/browser-tracker` and `@snowplow/browser-plugin-media`�
 ```bash
 npm install @snowplow/browser-tracker @snowplow/browser-plugin-media
 ```
+
+It is also possible to integrate this plugin using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/).
 {{% /tab %}}
 
 {{% tab name="Vimeo JS plugin" %}}
@@ -55,6 +57,8 @@ Install the `@snowplow/browser-tracker` and `@snowplow/browser-plugin-vimeo-t
 ```bash
 npm install @snowplow/browser-tracker @snowplow/browser-plugin-vimeo-tracking
 ```
+
+It is also possible to integrate this plugin using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/vimeo-tracking/).
 {{% /tab %}}
 
 {{% tab name="YouTube JS plugin" %}}
@@ -63,6 +67,8 @@ Install the `@snowplow/browser-tracker` and `@snowplow/browser-plugin-youtube
 ```bash
 npm install @snowplow/browser-tracker @snowplow/browser-plugin-youtube-tracking
 ```
+
+It is also possible to integrate this plugin using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/youtube-tracking/).
 {{% /tab %}}
 
 {{% tab name="HTML5 media tracking JS plugin" %}}
@@ -71,6 +77,8 @@ Install the `@snowplow/browser-tracker` and `@snowplow/browser-plugin-media-t
 ```bash
 npm install @snowplow/browser-tracker @snowplow/browser-plugin-media-tracking
 ```
+
+It is also possible to integrate this plugin using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media-tracking/).
 {{% /tab %}}
 
 {{% tab name="iOS" %}}
@@ -99,10 +107,6 @@ dependencies {
 {{% /tab %}}
 
 {{< /tabs >}}
-
-{{% notice note %}}
-It is also possible to integrate the plugins using a JavaScript script tag. For instructions, [please visit the documentation](https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v3/plugins/media/).
-{{% /notice %}}
 
 
 #### **Step 3:** Create and configure the tracker
