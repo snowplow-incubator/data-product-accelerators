@@ -6,7 +6,7 @@ post = ""
 
 Now that you have modeled data you would probably want to see the results in a visual way as well to be able to easily to identify patterns and trends in your data.
 
-We have created a Tableau workbook to showcase how you could do that, using csvs that were exported from the derived core web vitals tables (`snowplow_media_player_media_stats`, `snowplow_media_player_plays_by_pageview`, `snowplow_media_player_media_ads`, `snowplow_media_player_media_ad_views`).
+We have created a Tableau workbook to showcase how you could do that, using csvs that were exported from the derived media player tables (`snowplow_media_player_media_stats`, `snowplow_media_player_plays_by_pageview`, `snowplow_media_player_media_ads`, `snowplow_media_player_media_ad_views`).
 
 If you would like to see your own modeled data you can simply change the data sources and then you will be able to look at the visualizations to get inspiration of what you can build with your connector of choice (based on the warehouse you have).
 
