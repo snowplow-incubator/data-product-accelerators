@@ -60,3 +60,7 @@ Run our recommended selector specified tests to identify potential issues with t
 ```bash
 dbt test --selector snowplow_media_player_lean_tests
 ```
+
+#### **Step 5:** Visualize your pipeline data
+
+You can now get started with the analysis of user behavior across your media and video content by utilizing the Tableau workbook provided. For guidance on changing the dashboard to your own data source, refer back to the [visualization chapter](../../visualize/visualize_1/#change-the-dashboard-data-source).
