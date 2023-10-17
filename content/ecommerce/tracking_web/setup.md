@@ -133,7 +133,7 @@ Now the tracker has everything required to start collecting e-commerce action da
 Add a custom HTML tag to your GTM workspace as below. It should fire on all pages with priority 999:
 
 ``` javascript
-<script type="text/javascript" async=1 >
+<script type="text/javascript" >
   /* Set up tracker, plugins, link click tracking and page pings
   ** This tag is set to fire first with priority 999
   */

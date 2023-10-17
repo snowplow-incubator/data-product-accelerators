@@ -108,7 +108,7 @@ window.snowplow("trackCheckoutStep:{trackerName}", {
 
 {{% /tab %}}
 {{% tab name="Shopify" %}}
-To track a checkout step you can add the code below to a custom HTML tag in your Google workspace:
+To track a checkout step you can add the code below to a custom HTML tag in your GTM workspace:
 
 ```
 <script>

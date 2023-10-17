@@ -73,10 +73,10 @@ window.snowplow("trackProductView:{trackerName}", {
 
 #### `trackProductView`
 
-To track a product view, add the custom HTML tag to your Google workspace.
+To track a product view, add the custom HTML tag to your GTM workspace.
 
 ```
-<script type="text/javascript" async=1>
+<script type="text/javascript">
   var price = parseFloat({{productPrice}});
   
   // set page type

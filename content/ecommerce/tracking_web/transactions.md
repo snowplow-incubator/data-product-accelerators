@@ -142,10 +142,10 @@ window.snowplow("trackTransaction:{trackerName}", {
 
 {{% /tab %}}
 {{% tab name="Shopify" %}}
-To track a completed transaction you can add the following custom HTML tag to your Google Workspace:
+To track a completed transaction you can add the following custom HTML tag to your GTM Workspace:
 
 ```
-<script type="text/javascript" async=1>
+<script type="text/javascript">
   var revenue = parseFloat({{totalValue}});
   var tax = parseFloat({{tax}});
   var productsArray = [];

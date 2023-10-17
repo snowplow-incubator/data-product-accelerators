@@ -91,7 +91,7 @@ window.snowplow("trackAddToCart:{trackerName}", {
 {{% /tab %}}
 {{% tab name="Shopify" %}}
 
-To track a product/s addition to the cart you can add the following custom HTML tag to your Google Workspace:
+To track a product/s addition to the cart you can add the following custom HTML tag to your GTM Workspace:
 
 ```
 <script>
@@ -204,7 +204,7 @@ window.snowplow("trackRemoveFromCart:{trackerName}", {
 
 {{% /tab %}}
 {{% tab name="Shopify" %}}
-To track a product/s removal fron the cart you can add the following custom HTML tag to your Google Workspace:
+To track a product/s removal fron the cart you can add the following custom HTML tag to your GTM Workspace:
 
 ```
 <script>
