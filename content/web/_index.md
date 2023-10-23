@@ -90,4 +90,6 @@ Please note that Snowflake, Databricks, or BigQuery will be used for illustratio
 
 !['logo-banner' ](images/databricks_dashboard.png)
 
+{{% /tab %}}
+
 {{< /tabs >}}
