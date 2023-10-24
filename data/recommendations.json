@@ -51,7 +51,7 @@
                 "link": "https://snowplow.io/data-product-accelerators/composable-cdp/",
                 "category": "Web",
                 "type": "Advanced",
-                "content": "Create a single customer view and predict likelihood to convert with a composable CDP using Snowplow, Databricks, and Hightouch"
+                "content": "Create a single customer view and predict likelihood to convert with a composable CDP using Snowplow, Databricks, and Census"
             }
         ]
     }

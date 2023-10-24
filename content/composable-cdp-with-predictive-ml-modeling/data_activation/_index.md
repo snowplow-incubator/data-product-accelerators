@@ -16,4 +16,4 @@ flowchart LR
     style id3 fill:#f5f5f5,stroke:#333,stroke-width:1px
 {{</mermaid >}}
 
-In this chapter you will learn how to set-up Hightouch to enable your teams to easily build new audiences based on Snowplow's rich behavioral data and sync to their needed destinations.
+In this chapter you will learn how to set-up Census to enable your teams to easily build new audiences based on Snowplow's rich behavioral data and sync to their needed destinations.
