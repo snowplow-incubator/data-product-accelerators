@@ -13,4 +13,4 @@ Clone this [notebook](https://github.com/snowplow/composable-cdp-with-predictive
 
 {{< jupyter snowflake_deploying_model 500 >}}
 
-Now you are ready to use your model output for activation via Hightouch. The next chapter, [Data Activation]({{< ref data_activation >}}), guides you through how to target high propensity visitors to optimize ad spend.
+Now you are ready to use your model output for activation via Census. The next chapter, [Data Activation]({{< ref data_activation >}}), guides you through how to target high propensity visitors to optimize ad spend.
