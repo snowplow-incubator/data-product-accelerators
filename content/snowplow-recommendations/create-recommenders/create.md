@@ -4,18 +4,30 @@ weight = 1
 post = ""
 +++
 
-#### **Step 1:** Update .env file
-Update the `aws_personalize_utilities/.env` file with your variables. Either `ecommerce` or `vod` (video_on_demand) will be appended to the names you give below (e.g. `my_dataset_group` with the domain `ecommerce` will be named in AWS as `my_dataset_group_ecommerce`). Each dataset and import job will also have the data type (interactions, users or items) appended to the name you give, e.g. `test_dataset` will become `test_dataset_ecommerce_interactions`.
-The .env file should look like this:
-```
-dataset_group_name = 'dataset_group' # this can be anything you like
-schema_name = 'interactions_schema' # this can be anything you like
-dataset_name = 'dataset' # this can be anything you like
-import_job_name = 'import_job' # this can be anything you like
-s3_bucket_name = 'awspersonalizebucket123' # the name of the S3 bucket that was created
-role_arn = 'arn:aws:iam::485941242585:role/personalize_role' # the ARN of the role created for Personalize (Not the role created for Snowflake). If you used Terraform, this was an output variable.
-domains_and_dataset_types={"ECOMMERCE": ["interactions", "items", "users"]} # add 'VIDEO_ON_DEMAND' and its dataset types to the dict if you are creating media recommenders as well, or just 'VIDEO_ON_DEMAND' with its dataset types if you are only creating media recommenders. This will just be "VIDEO_ON_DEMAND": ["interactions"] unless you have written SQL for the other dataset types.
-```
+#### **Step 1:** Update the config.yml file
+Set up the configuration yaml file (`config.yaml`) that'll be used in setting up the AWS Personalize service and jobs.
+   
+   ```yaml
+    dataset_group_base_name: 
+    schema_base_name: 
+    dataset_base_name: 
+    import_job_base_name: 
+    s3_bucket_name: 
+    role_arn: 
+    domains_and_datasets:
+      VIDEO_ON_DEMAND:
+        enable: true
+        datasets: [interactions]
+        recommenders: [most_popular]
+      ECOMMERCE:
+        enable: true
+        datasets: [interactions, items, users]
+        recommenders: [most_viewed, customers_who_viewed_x_also_viewed]
+   ```
+
+    The dataset/group, schema and import job names can be configured to your preference. The `s3_bucket_name` should be just the name of the S3 bucket (not the full s3 path) you created either manually or via Terraform; similarly the `role_arn` is the name of the Personalize IAM role you created, it corresponds to the Terraform variable `personalize_role_name` with a default name of `PersonalizeIAMRole`.
+
+    You may choose which or both of the domains for Personalize to create by setting the `enabled` flag in the config file to `true` or `false`. Additionally you can choose which datasets to be created for training by Personalize by adding them to the list for the `datasets` parameter. Ensure that whichever datasets you add here are also exported by your dbt package by adding the corresponding table names to the `dbt_project.yml`'s `tables_to_export` config value. Finally you will be able to select which recommender you'd like Personalize to generate for your datasets by adding their config names in to the list parameter `recommenders` (refer to the table below for the list of available recommenders).
 
 #### **Step 2:** Create virtual environment
 Before running the script to create the recommenders with AWS personalize, use the requirements.txt file to set up the necessary packages in a virtual environment. 

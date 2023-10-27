@@ -10,7 +10,7 @@ weight = 1
 
 #### Introduction
 
-This accelerator will show you how to use the [AWS Personalize service](https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html) to create recommenders based on your Snowplow data, enabling you to provide personalized recommendations to your users. There are two domain use cases that are covered in this accelerator: ecommerce and video_on_demand. Although the instructions will generally reference both use cases, you can choose to do one or the other, or both.
+This accelerator will show you how to use the [AWS Personalize service](https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html) to create recommenders based on your Snowplow data, enabling you to provide personalized recommendations to your users. There are two domain use cases that are covered in this accelerator: E-commerce and Video On Demand. Although the instructions will generally reference both use cases, you can choose to do one or the other, or both.
 
 
 
@@ -18,14 +18,14 @@ In this accelerator, we will enable you to:
 
 * Run dbt to transform your Snowplow data into a format that can be used by AWS Personalize
 * Set up the infrastructure required to run AWS Personalize, including the necessary IAM roles and policies
-* Create ecommerce and/or media (video_on_demand) recommenders in AWS Personalize
+* Create ecommerce and/or media (video on demand) recommenders in AWS Personalize
 * Run a local Flask application to interact with AWS Personalize 
 ***
 
 #### Who is this guide for?
 
 - Data practitioners who are already familiar with dbt and Python, as well as running commands in the command line.
-- Data practitioners who want to use AWS Personalize to create recommenders for either ecommerce or media (video_on_demand) based on their Snowplow data.
+- Data practitioners who want to use AWS Personalize to create recommenders for either ecommerce or media (VOD) based on their Snowplow data.
 - Data practitioners who would like to learn with a hands-on approach about AWS Personalize and how it can be used to create recommenders, using sample data.
 ***
 
@@ -33,7 +33,7 @@ In this accelerator, we will enable you to:
 
 In an estimated minimum of 5.5 hours, you can achieve the following:
 
-- **Upload -** Upload some sample data (optional)
+- **Upload -** Upload some sample data (optional) <!-- TODO add sample data -->
 - **Create Supporting Infrastructure -** Create the supporting infrastructure needed move your data from your warehouse to S3, including the necessary IAM roles and policies
 - **Model -** Run dbt to transform your Snowplow data into a format that can be used by AWS Personalize
 - **Create Recommenders -** Create recommenders in AWS Personalize
@@ -72,6 +72,7 @@ The time guides are only a rough estimation. For example, if you use Terraform f
 #### Prerequisites
 
 - If using Snowflake, you have ACCOUNTADMIN or the global CREATE STORAGE INTEGRATION privilege in your Snowflake account.
+- If using Databricks, you need to have the Account Admin, Workspace Admin, and Metastore Admin (or the CREATE EXTERNAL LOCATION privilege which the Metastore Admin will have by default) as well as the CREATE MANAGED STORAGE permissions; Unity Catalog enabled
 - You have the necessary permissions in AWS to create/update IAM roles and policies, create an S3 bucket, and create AWS personalize resources.
 
 If you are not using the sample data: 
@@ -80,4 +81,3 @@ If you are not using the sample data:
 And/or
 
 - An implementation of the dbt-snowplow-media-player package (>= 0.6.0). This will have created the `snowplow_media_player_base` table, which is used by this dbt package to create the video_on_demand dataset for AWS Personalize. If you don't have this table, you can create it by following the instructions [here](https://docs.snowplow.io/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-quickstart/media-player/).
-

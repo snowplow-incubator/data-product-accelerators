@@ -6,11 +6,11 @@ post = ""
 
 This dbt package gives you the option of creating tables for either Ecommerce or Media (video_on_demand) data, or both, if you have both types of data. You will need to specify in the `dbt_project.yml` file which tables you would like to create (instructions below).
 
-For ecommerce, we will use the `snowplow_ecommerce_product_interactions` table created by the dbt-snowplow-ecommerce package to create the ecommerce dataset for AWS Personalize. 
+For ecommerce, we will use the `snowplow_ecommerce_product_interactions` table created by the dbt-snowplow-ecommerce package to create the E-commerce dataset for AWS Personalize. 
 
-For media, we will use the `snowplow_media_player_base` table created by the dbt-snowplow-media-player package to create the video_on_demand dataset for AWS Personalize.
+For media, we will use the `snowplow_media_player_base` table created by the dbt-snowplow-media-player package to create the Video On Demand dataset for AWS Personalize.
 
-By default, the items, users and interactions tables can be created for ecommerce, but only the interactions table can be created for video_on_demand. This is because the video_on_demand items table has required fields (e.g. genres) that aren't tracked in the media tracking plugins by default. You can write custom SQL to create the items and users tables for media if you have the [required fields](https://docs.aws.amazon.com/personalize/latest/dg/VIDEO-ON-DEMAND-datasets-and-schemas.html) either in your snowplow events table or in a separate table. 
+By default, the items, users and interactions tables can be created for ecommerce, but only the interactions table can be created for video_on_demand. This is because the VOD items table has required fields (e.g. genres) that aren't tracked in the media tracking plugins by default. You can write custom SQL to create the items and users tables for media if you have the [required fields](https://docs.aws.amazon.com/personalize/latest/dg/VIDEO-ON-DEMAND-datasets-and-schemas.html) either in your snowplow events table or in a separate table. 
 See expandable section for further instructions.
 
 {{% expand "Creating items and users for video_on_demand" %}}
@@ -18,66 +18,32 @@ See expandable section for further instructions.
 
 These instructions are for both items and users, but you can create just one if you only have the requirements for one.
 1. Create macros in the macros folder of your project, called `create_media_items` and `create_media_users`. You can copy the formatting of the macros for ecommerce. 
-2. Within the macros, write the SQL that will output tables with the required fields for items and/or users. You can find the required fields [here](https://docs.aws.amazon.com/personalize/latest/dg/VIDEO-ON-DEMAND-datasets-and-schemas.html). The models are already set up to use the macros that you create.
-3. Change the relevant models in the models section of your `dbt_project.yml` file to `+enabled: true`:
-```
-      snowplow_aws_personalize_media_items:
-        +enabled: true
-      snowplow_aws_personalize_media_users:
-        +enabled: true
-```
-4. You will also need to add the model name(s) to the list of tables to export:
-```
-vars:
-...
-tables_to_export: ["snowplow_aws_personalize_media_interactions", "snowplow_aws_personalize_media_items"] # Add all tables that you want to export to AWS Personalize
-```
-5. Create a schema for each model in the aws_personalize_utilities/schemas/ folder. They must be named `media_items.avro` and `media_users.avro` for the python script that creates the recommenders to read them. You can copy the formatting of the ecommerce schemas or see the documentation [here](https://docs.aws.amazon.com/personalize/latest/dg/VIDEO-ON-DEMAND-datasets-and-schemas.html).
+2. Within the macros, write the SQL that will output tables with the required fields for items and/or users. You can find the required fields [here](https://docs.aws.amazon.com/personalize/latest/dg/VIDEO-ON-DEMAND-datasets-and-schemas.html). Create the models under the 'media' folder at `models/media/`.
+3. You will also need to add the model name(s) to the list parameter in the config file (i.e. `tables_to_export`).
+4. Create a schema for each model in the aws_personalize_utilities/schemas/ folder. They must be named `media_items.avro` and `media_users.avro` for the python script that creates the recommenders to read them. You can copy the formatting of the ecommerce schemas or see the documentation [here](https://docs.aws.amazon.com/personalize/latest/dg/VIDEO-ON-DEMAND-datasets-and-schemas.html).
 {{% /expand %}}
 
 #### **Step 1:** Update the vars in your `dbt_project.yml` file:
-<!-- TODO: update these after media model finalised -->
-```
-vars:
-  snowflake_stage_name: "SNOWFLAKE_STAGE_NAME_HERE"  # The name of the stage created in Snowflake - if you used Terraform, this was an output variable.
-  tables_to_export: ["snowplow_aws_personalize_ecommerce_interactions", "snowplow_aws_personalize_ecommerce_items", "snowplow_aws_personalize_ecommerce_users"] # Add all tables that you want to export to AWS Personalize
-  
-  # Below are only for ecommerce
-  ecommerce_product_source: "{{ source('ecommerce', 'snowplow_ecommerce_product_interactions') }}" # you will need to update the source in the schema.yml file to use your schema (and table if named differently).
-  ecommerce_start_date: '2023-01-01' # Add the date that you want to start from (leave as '' if you want to use the look_back_days variable)
-  ecommerce_end_date: '2023-01-31' # Add the date that you want to end on (leave as '' if you want to use the look_back_days variable)
-  look_back_days: 31 # This is only used if no dates are specified, and it processes data from (current date - 1) minus the number of days specified here.
-  ecommerce_product_categories_separator: '/' # The separator used in the product_category field in the ecommerce table
-    
-  # Below are only for media (video_on_demand) 
-  snowplow__enable_youtube: true # set to true if the YouTube context schema is enabled
-  snowplow__enable_whatwg_media: true # set to true if the HTML5 media element context schema is enabled
-  media_start_date: '2003-11-23'
-  media_end_date: '2023-08-31'
-  media_look_back_days: 31
 
-```
-
-Update the models in your `dbt_project.yml` file, depending on which tables you want to create. The following configuration will create the ecommerce interactions, users and items tables, but no media tables:
-```
+The current version of this package will only build the models (datasets) for the E-commerce domain (i.e. 'interactions', 'items' and 'users') whereas for the Video On Demand domain only the 'interactions' model will be created. This is due to the fact that the current media tracking available doesn't capture some data that are required fields for the 'items' and 'users' datasets for VOD. You are able to create them yourself if you have the available fields in other tables.
+   
+You may wish to only run the models for a specific domain (or both) by enabling them in the project config file via:
+```yaml
 models:
   snowplow_recommendations:
-    # +schema: "recommendations"
     +materialized: table
-    snowflake:
-      enabled: "{{ target.type == 'snowflake' | as_bool() }}"
-      snowplow_aws_personalize_ecommerce_interactions:
-        +enabled: true
-      snowplow_aws_personalize_ecommerce_items:
-        +enabled: true
-      snowplow_aws_personalize_ecommerce_users:
-        +enabled: true
-      snowplow_aws_personalize_media_interactions:
-        +enabled: false
-      snowplow_aws_personalize_media_items:
-        +enabled: false
-      snowplow_aws_personalize_media_users:
-        +enabled: false
-``` 
+    ecommerce:
+      enabled: true
+    media:
+      enabled: true
+```
 
-Run `dbt deps` followed by `dbt run` in your project directory. This will create the table(s) in Snowflake and copy it/them to S3.
+You may need to further update some variables in your `dbt_project.yml` file:
+- `tables_to_export`: When a domain type is enabled in the config file then all the models for that domain will be built, but you may list which tables (models) to be exported to S3 with this variable here. Enter the name of the model in this array if you'd like a table to be exported to S3 to be trained by AWS Personalize (note that the 'interaction' models are required datasets but the 'items' and 'users' datasets are optional).
+- `snowflake_stage_name`: This will be the name of the external Stage in your Snowflake account to load data to AWS S3. If you used Terraform to create this stage then the name can be found in the TF variable files.
+- `external_catalog`: This is the name of the external catalog on your Databricks account. In order to create external tables the query must be executed from an external catalog. If you used Terraform to create this stage then the name can be found in the TF variable files.
+- `s3_bucket`: This is the S3 path (i.e. `s3://<bucket name>/`) for which your Databricks' external location is configured to. If you used Terraform to create this stage then the name can be found in the TF variable files.
+
+The other variables behave similarly to all the other Snowplow dbt packages and their configurable variables for running the models.
+
+Run `dbt deps` followed by `dbt run` in the `dbt-snowplow-recommendations` directory. This will create the table(s) in your data warehouse and export the models as csv files to the S3 bucket.
