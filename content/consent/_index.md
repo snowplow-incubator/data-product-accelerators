@@ -14,7 +14,7 @@ By using Snowplow to collect consent preference data, you can enhance your data 
 
 Here you will learn how to:
 
-- Set-up Snowplow Consent Tracking on your CMP (_example using Cookiebot_)
+- Set-up Snowplow Consent Tracking on your CMP (_examples using Cookiebot and OneTrust_)
 - Model your data using the Snowplow-Consent model
 - Create a consent health check dashboard from your data in Streamlit
 
