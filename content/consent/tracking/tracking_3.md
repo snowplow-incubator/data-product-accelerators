@@ -14,7 +14,7 @@ Tracking `cmp visible time` will allow you to detect issues and opportunities in
 
 #### Track consent banner visibility
 
-Below we will showcase how you can track banner visibility using the Cookiebot event `CookiebotOnDialogDisplay` signifying the banner has been shown to the visitor's screen.
+Below we will showcase how you can track banner visibility using the Cookiebot event `CookiebotOnDialogDisplay` signifying the banner has been shown to the visitor's screen. Other CMPs might have similar events or you can use a custom implementation using browser APIs such as [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 
 {{< tabs groupId="select_js" >}}
 {{% tab name="Browser API" %}}
