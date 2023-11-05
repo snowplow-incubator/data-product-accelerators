@@ -15,14 +15,14 @@ Set up the configuration yaml file (`config.yaml`) that'll be used in setting up
     s3_bucket_name: 
     role_arn: 
     domains_and_datasets:
-      VIDEO_ON_DEMAND:
-        enable: true
-        datasets: [interactions]
-        recommenders: [most_popular]
       ECOMMERCE:
         enable: true
         datasets: [interactions, items, users]
         recommenders: [most_viewed, customers_who_viewed_x_also_viewed]
+      VIDEO_ON_DEMAND:
+        enable: true
+        datasets: [interactions]
+        recommenders: [most_popular]
    ```
 
     The dataset/group, schema and import job names can be configured to your preference. The `s3_bucket_name` should be just the name of the S3 bucket (not the full s3 path) you created either manually or via Terraform; similarly the `role_arn` is the name of the Personalize IAM role you created, it corresponds to the Terraform variable `personalize_role_name` with a default name of `PersonalizeIAMRole`.

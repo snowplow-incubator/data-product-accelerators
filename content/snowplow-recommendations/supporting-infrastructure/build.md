@@ -22,7 +22,8 @@ Use the provided Terraform script to create the resources. This is the recommend
 
 **II**. Follow the instructions in the following link to configure a storage integration between Snowflake and S3 - https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html. You will need either global CREATE STORAGE INTEGRATION permissions or to be an ACCOUNTADMIN in Snowflake for this step, as well as permissions in AWS to create and manage IAM policies and roles. 
 
-**III**. Create a policy and role for AWS personalize - follow instructions here https://docs.aws.amazon.com/personalize/latest/dg/set-up-required-permissions.html 
+**III**. Create a policy and role for AWS personalize - follow instructions here https://docs.aws.amazon.com/personalize/latest/dg/set-up-required-permissions.html
+- Also follow the instructions here https://docs.aws.amazon.com/personalize/latest/dg/cross-service-confused-deputy-prevention.html to prevent the confused deputy problem, by modifying the trust policy for the role you created in the previous step.
 
 **IV**. We then need to create two more policies - one that is attached to the personalize role, and another that is attached to the bucket. These allow the personalize service to access your S3 bucket: https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html 
 There are a few headings in this document that aren't relevant; the ones to follow are:
@@ -31,11 +32,11 @@ There are a few headings in this document that aren't relevant; the ones to foll
 
 ##### Snowflake
 
-**I** Follow the instructions in the following link to configure a Storage Integration between Snowflake and S3 - https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html. You will need either global CREATE STORAGE INTEGRATION permissions or to be an ACCOUNTADMIN in Snowflake for this step, as well as permissions in AWS to create and manage IAM policies and roles.
+Follow the instructions in the following link to configure a Storage Integration between Snowflake and S3 - https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html. You will need either global CREATE STORAGE INTEGRATION permissions or to be an ACCOUNTADMIN in Snowflake for this step, as well as permissions in AWS to create and manage IAM policies and roles.
 
 ##### Databricks
 
-**I** Follow the instructions in the following link to create a Storage Credential and External Location (on S3) to serve as the location to create external tables on - https://docs.databricks.com/en/data-governance/unity-catalog/manage-external-locations-and-credentials.html#requirements. You will need to be an Account Admin to create Storage Credentials, however once created the account admin can delegate ownership to other users for management. To create External Locations the user must have the CREATE EXTERNAL LOCATION privilege on both the metastore and Storage Credential referenced in the external location (Metastore Admin have this permission by default). Finally the name of the S3 bucket that you want the external location to reference cannot use dot notation.
+Follow the instructions in the following link to create a Storage Credential and External Location (on S3) to serve as the location to create external tables on - https://docs.databricks.com/en/data-governance/unity-catalog/manage-external-locations-and-credentials.html#requirements. You will need to be an Account Admin to create Storage Credentials, however once created the account admin can delegate ownership to other users for management. To create External Locations the user must have the CREATE EXTERNAL LOCATION privilege on both the metastore and Storage Credential referenced in the external location (Metastore Admin have this permission by default). Finally the name of the S3 bucket that you want the external location to reference cannot use dot notation.
 
 Once you have created the external location you will also need to create a new catalog with a managed location (i.e. the S3 bucket path referenced in the external location), for example:
 ```sql
@@ -61,7 +62,7 @@ personalize_s3_access_policy_name = "PersonalizeS3AccessPolicy"
 
 ```
 
-**III.** Go into the folder of the data warehouse your dbt package will be operating in:
+**III.** Navigate to the folder of the data warehouse your dbt package will be operating in:
   - Snowflake (`terraform_utilities/snowflake/`)
     1. You may wish to again input the Terraform variables during the `apply` phase or provide them ahead of time by creating a `terraform.tfvars` file; the file should look like the below:
     ```
@@ -104,7 +105,7 @@ personalize_s3_access_policy_name = "PersonalizeS3AccessPolicy"
   
     3. Run `terraform init` in this folder (i.e. `terraform_utilities/databricks/`). This will initialise Terraform and download the necessary providers.
 
-    4. Due to the nature of the required role on AWS for the Databricks Storage Credentials be self referential and the current limiting factor of Terraform to create a trust policy on a new role in the same `apply` phase, the TF file for Databricks will need to be applied twice. So please run `terraform apply` and you'll see the error regarding the failure in creating the external location because the AWS IAM role does not have the READ permission on the S3 bucket TF would have just created. Upon running `terraform apply` a second time this will be amended and the external location as well as the new external catalog (with a managed location) will both be successfully created.
+    4. Because the AWS role required for the Databricks Storage Credentials is self-referential and Terraform currently cannot create a trust policy for a new role in the same apply phase, the TF file for Databricks needs to be applied twice. So please run `terraform apply` and you'll see the error regarding the failure in creating the external location because the AWS IAM role does not have the READ permission on the S3 bucket TF would have just created. Upon running `terraform apply` a second time this will be amended and the external location as well as the new external catalog (with a managed location) will both be successfully created.
 
 {{% /tab %}}
 {{< /tabs >}}
