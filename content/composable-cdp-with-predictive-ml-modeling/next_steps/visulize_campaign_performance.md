@@ -3,7 +3,7 @@ title = "Visualize Ad Campaign Performance"
 weight = 2
 +++
 
-At this stage you will have at least one campaign up and running synced from a Hightouch audience.
+At this stage you will have at least one campaign up and running synced from a Census audience.
 
 #### **Step 1:** Attribution in Snowplow
 Snowplow allows you to gain full control of your attribution.
@@ -36,8 +36,8 @@ Join your ingested campaign data with your Snowplow tracked attribution to build
 
 ![ad_campaign_dashboard](../images/ad_campaign_dashboard.png?width=100pc)
 
-#### **Step 4:** Drill into Hightouch activated campaigns
-Drill deeper into the performance of your Hightouch activated campaigns.
-Below is an example of campaigns activated by two Hightouch audiences, *Awareness (ML Based)* and *Awareness (Rule Based)*, that have been running side by side. You can see the campaigns using ML outputs (targeting high propensity visitors) are achieving a greater ROI.
+#### **Step 4:** Drill into Census activated campaigns
+Drill deeper into the performance of your Census activated campaigns.
+Below is an example of campaigns activated by two Census audiences, *Awareness (ML Based)* and *Awareness (Rule Based)*, that have been running side by side. You can see the campaigns using ML outputs (targeting high propensity visitors) are achieving a greater ROI.
 
-![ad_campaign_dashboard](../images/ad_campaign_dashboard_hightouch.png?width=100pc)
+![ad_campaign_dashboard](../images/ad_campaign_dashboard_census.png?width=100pc)
