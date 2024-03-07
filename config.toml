@@ -30,12 +30,6 @@ url = "https://snowplow.io/data-product-accelerators/"
 weight = 9
 
 [[Languages.en.menu.shortcuts]]
-name = "Try Snowplow"
-identifier = "ts"
-url = "https://try.snowplowanalytics.com/"
-weight = 10
-
-[[Languages.en.menu.shortcuts]]
 name = "Book a demo"
 identifier = "b"
 url = "https://snowplow.io/get-started/book-a-demo-of-snowplow-bdp/"
