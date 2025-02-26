@@ -1,65 +1,65 @@
 {
-    "accelerators": {
-        "foundation": [
-            {
-                "name": "Advanced Analytics for Web",
-                "link": "https://docs.snowplow.io/accelerators/web/",
-                "category": "Web",
-                "content": "Build a deeper understanding of customer behavior across your website"
-            },
-            {
-                "name": "Advanced Analytics for Mobile",
-                "link": "https://docs.snowplow.io/accelerators/mobile/",
-                "category": "Mobile",
-                "type": "Foundation",
-                "content": "Understand user engagement in your mobile apps to create additional insight and opportunity"
-            },
-            {
-                "name": "Advanced Analytics for Hybrid Apps",
-                "link": "https://docs.snowplow.io/accelerators/hybrid/",
-                "category": "Mobile",
-                "type": "Foundation",
-                "content": "Track user behavior across iOS and Android applications with native and embedded web views"
-            },
-            {
-                "name": "Video and Media Analytics",
-                "link": "https://docs.snowplow.io/accelerators/media-player/",
-                "category": "Web & Mobile",
-                "type": "Foundation",
-                "content": "Create a heightened insight into user behavior across your media players"
-            }
-        ],
-        "intermediate": [
-            {
-                "name": "Ecommerce Analytics",
-                "link": "https://docs.snowplow.io/accelerators/ecommerce/",
-                "category": "Web",
-                "type": "Intermediate",
-                "content": "Powerful ecommerce analytics to help you optimize and improve your customer experience"
-            },
-            {
-                "name": "Consent Tracking for Marketing",
-                "link": "https://docs.snowplow.io/accelerators/consent/",
-                "category": "Web",
-                "type": "Intermediate",
-                "content": "Gain full transparency into marketing consent at every step of their customer journey"
-            }
-        ],
-        "advanced": [
-            {
-                "name": "Fractional Attribution Modeling",
-                "link": "https://docs.snowplow.io/accelerators/snowplow-fractribution/",
-                "category": "Web",
-                "type": "Advanced",
-                "content": "Empower your marketing team with multi-touch Fractional Attribution Modeling."
-            },
-            {
-                "name": "Build a Composable CDP with Predictive ML Modeling",
-                "link": "https://snowplow.io/data-product-accelerators/composable-cdp/",
-                "category": "Web",
-                "type": "Advanced",
-                "content": "Create a single customer view and predict likelihood to convert with a composable CDP using Snowplow, Databricks, and Census"
-            }
-        ]
-    }
+  "accelerators": {
+    "foundation": [
+      {
+        "name": "Advanced Analytics for Web",
+        "link": "https://docs.snowplow.io/accelerators/web/",
+        "category": "Web",
+        "content": "Build a deeper understanding of customer behavior across your website"
+      },
+      {
+        "name": "Advanced Analytics for Mobile",
+        "link": "https://docs.snowplow.io/accelerators/mobile/",
+        "category": "Mobile",
+        "type": "Foundation",
+        "content": "Understand user engagement in your mobile apps to create additional insight and opportunity"
+      },
+      {
+        "name": "Advanced Analytics for Hybrid Apps",
+        "link": "https://docs.snowplow.io/accelerators/hybrid/",
+        "category": "Mobile",
+        "type": "Foundation",
+        "content": "Track user behavior across iOS and Android applications with native and embedded web views"
+      },
+      {
+        "name": "Video and Media Analytics",
+        "link": "https://docs.snowplow.io/accelerators/media-player/",
+        "category": "Web & Mobile",
+        "type": "Foundation",
+        "content": "Create a heightened insight into user behavior across your media players"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Ecommerce Analytics",
+        "link": "https://docs.snowplow.io/accelerators/ecommerce/",
+        "category": "Web",
+        "type": "Intermediate",
+        "content": "Powerful ecommerce analytics to help you optimize and improve your customer experience"
+      },
+      {
+        "name": "Consent Tracking for Marketing",
+        "link": "https://docs.snowplow.io/accelerators/consent/",
+        "category": "Web",
+        "type": "Intermediate",
+        "content": "Gain full transparency into marketing consent at every step of their customer journey"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Fractional Attribution Modeling",
+        "link": "https://docs.snowplow.io/accelerators/snowplow-fractribution/",
+        "category": "Web",
+        "type": "Advanced",
+        "content": "Empower your marketing team with multi-touch Fractional Attribution Modeling."
+      },
+      {
+        "name": "ML Conversion Scoring for Composable CDP",
+        "link": "https://snowplow.io/data-product-accelerators/composable-cdp/",
+        "category": "Web",
+        "type": "Advanced",
+        "content": "Create a single customer view and predict likelihood to convert with a composable CDP using Snowplow, Databricks, and Census"
+      }
+    ]
+  }
 }
