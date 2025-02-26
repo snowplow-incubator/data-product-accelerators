@@ -48,7 +48,7 @@ url = "https://github.com/snowplow"
 weight = 40
 
 [[Languages.en.menu.shortcuts]]
-name = "Discourse"
+name = "Community"
 identifier = "di"
-url = "https://discourse.snowplow.io/"
+url = "https://community.snowplow.io/"
 weight = 50
