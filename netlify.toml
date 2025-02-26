@@ -18,13 +18,19 @@ command = './scripts/build.sh build $BUILD_OUTPUT_PATH $DEPLOY_PRIME_URL'
 command = './scripts/build.sh build $BUILD_OUTPUT_PATH $DEPLOY_PRIME_URL'
 
 [[redirects]]
-from = "/*"
-to = "/accelerators/:splat"
+from = "/composable-cdp-with-predictive-ml-modeling/*"
+to = "/accelerators/ml-conversion-scoring-for-composable-cdp/:splat"
 force = true
 status = 301
 
 [[redirects]]
 from = "/accelerators/composable-cdp-with-predictive-ml-modeling/*"
 to = "/accelerators/ml-conversion-scoring-for-composable-cdp/:splat"
+force = true
+status = 301
+
+[[redirects]]
+from = "/*"
+to = "/accelerators/:splat"
 force = true
 status = 301
