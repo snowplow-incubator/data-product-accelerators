@@ -21,17 +21,18 @@ Once finished, you will be able to use predictive models to achieve a competitiv
 
 ![composable_cdp](images/composable_cdp.png)
 
-{{% notice note %}}
-Data loaders like [Fivetran](https://www.fivetran.com/) can play an important role in a composable CDP.
-In this accelerator we don't go into detail on setting these up, see [Fivetran's Documentation](https://fivetran.com/docs/destinations/databricks) if you want to learn more.
-{{% /notice %}}
-
 ***
 
 #### Who is this guide for?
 
 - Data scientists who would like to learn how Snowplow behavioral data can be used to build predictive ML models
 - Data practitioners who want to learn how to activate Snowplow behavioral data in third party tools
+
+{{% notice note %}}
+Data loaders like [Fivetran](https://www.fivetran.com/) can play an important role in a composable CDP.
+In this accelerator we don't go into detail on setting these up. See [Fivetran's Documentation](https://fivetran.com/docs/destinations/databricks) if you want to learn more.
+{{% /notice %}}
+
 
 ***
 
