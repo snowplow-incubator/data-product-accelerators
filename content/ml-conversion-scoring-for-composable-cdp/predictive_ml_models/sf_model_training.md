@@ -1,7 +1,7 @@
 +++
 title = "Snowflake - Model Training"
 weight = 4
-url= '/composable-cdp-with-predictive-ml-modeling/snowflake/model_training'
+url= '/ml-conversion-scoring-for-composable-cdp/predictive_ml_models/snowflake/model_training'
 
 +++
 

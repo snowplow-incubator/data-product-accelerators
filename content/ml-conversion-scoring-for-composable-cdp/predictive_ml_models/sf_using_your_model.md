@@ -1,7 +1,7 @@
 +++
 title = "Snowflake - Using your Model"
 weight = 5
-url= '/composable-cdp-with-predictive-ml-modeling/snowflake/using_your_model'
+url= '/ml-conversion-scoring-for-composable-cdp/predictive_ml_models/snowflake/using_your_model'
 
 +++
 
