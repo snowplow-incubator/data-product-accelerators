@@ -1,7 +1,7 @@
 +++
 title = "Databricks - Model Training"
 weight = 2
-url= '/composable-cdp-with-predictive-ml-modeling/databricks/model_training'
+url= '/ml-conversion-scoring-for-composable-cdp/predictive_ml_models/databricks/model_training'
 
 +++
 

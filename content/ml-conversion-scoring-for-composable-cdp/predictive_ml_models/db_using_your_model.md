@@ -1,7 +1,7 @@
 +++
 title = "Databricks - Using your Model"
 weight = 3
-url= '/composable-cdp-with-predictive-ml-modeling/databricks/using_your_model'
+url= '/ml-conversion-scoring-for-composable-cdp/predictive_ml_models/databricks/using_your_model'
 
 +++
 
